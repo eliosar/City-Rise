@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2136971858039768199}
   - component: {fileID: 5255979396737103151}
   - component: {fileID: 8236740252509425011}
-  - component: {fileID: -2133779467960853307}
   m_Layer: 0
   m_Name: Fisher
   m_TagString: Untagged
@@ -180,16 +179,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2133779467960853307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912160044096203380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55180af13e41bed4d8e9f4c06c024029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}

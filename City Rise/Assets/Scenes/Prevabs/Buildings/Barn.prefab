@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 7553926193830850241}
   - component: {fileID: 6824709320235321019}
   - component: {fileID: 579015708777700382}
-  - component: {fileID: -1835782180488212127}
   m_Layer: 0
   m_Name: Barn
   m_TagString: Untagged
@@ -409,19 +408,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ILastEntered: {fileID: 0}
   ILastExited: {fileID: 0}
---- !u!114 &-1835782180488212127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4431784724901261051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55180af13e41bed4d8e9f4c06c024029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!1 &4435103036279188735
 GameObject:
   m_ObjectHideFlags: 0

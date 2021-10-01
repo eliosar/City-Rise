@@ -17,7 +17,7 @@ public class Main : MonoBehaviour
     public GameObject Buildingsplaced;
     private string choosedBuilding;
     private StringandNumber freeBuildings;
-    private StringandNumber Trades;
+    public StringandNumber Trades;
     private int Storagesplaced = 0;
     private GameObject MainCameraCanvas;
     private GameObject JobBuildingsCanvas;
@@ -93,6 +93,7 @@ public class Main : MonoBehaviour
                 if(Canvas.name == otherBuilding.name + " Canvas")
                 {
                     otherBuildingsCanvas[currentotherBuildingCanvas] = Canvas;
+                    currentotherBuildingCanvas += 1;
                 }
             }
         }
@@ -104,9 +105,10 @@ public class Main : MonoBehaviour
 
         foreach (GameObject otherBuildingCanvas in otherBuildingsCanvas)
         {
-            if (otherBuildingCanvas.name == name)
+            if (name == otherBuildingCanvas.name)
             {
                 Canvas = otherBuildingCanvas;
+                break;
             }
         }
 

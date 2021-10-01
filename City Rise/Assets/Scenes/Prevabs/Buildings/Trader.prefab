@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 103198695544843255}
   - component: {fileID: -261506844305390166}
   - component: {fileID: -7183152152596645552}
-  - component: {fileID: 9117926211539815722}
+  - component: {fileID: -5806596072744973959}
   m_Layer: 0
   m_Name: Trader
   m_TagString: Untagged
@@ -139,8 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315c24b5b6c52744ea7e09503e982f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Trades:
-    Arrays: []
+  TradesArray: []
 --- !u!54 &-7183152152596645552
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,7 +156,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9117926211539815722
+--- !u!114 &-5806596072744973959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

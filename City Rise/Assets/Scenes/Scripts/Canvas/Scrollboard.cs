@@ -51,11 +51,11 @@ public class Scrollboard : MonoBehaviour
         {
             GameObject Child = Buildings.transform.GetChild(i).gameObject;
 
-            foreach (StringandNumber.rowData Array in GetComponentInParent<Trader>().Trades.Arrays)
+            foreach (StringandNumber.rowData Array in GetComponentInParent<Trader>().getTradesArray())
             {
                 if (Child.name == Array.Name)
                 {
-                    Child.GetComponent<Amount>().Number = Array.Amount;
+                    Child.GetComponent<Amount>().Number = Array.Costs;
                 }
             }
         }

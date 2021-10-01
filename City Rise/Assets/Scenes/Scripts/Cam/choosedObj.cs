@@ -50,6 +50,7 @@ public class choosedObj : MonoBehaviour
                                         currentJobBuildings += 1;
                                         GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<JobBuildings>().enabled = true;
                                         GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().addallmaxPeopleInBuildings(GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<JobBuildings>().maxPeopleInBuilding);
+                                        break;
                                     }
                                 }
 
@@ -61,6 +62,7 @@ public class choosedObj : MonoBehaviour
                                         GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsWithTransmitter>().enabled = true;
 
                                         GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().addallmaxPeopleInBuildings(GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsWithTransmitter>().maxPeopleInBuilding);
+                                        break;
                                     }
                                 }
 
@@ -139,49 +141,41 @@ public class choosedObj : MonoBehaviour
                             GetComponent<Main>().ChoosedBuildingPlace.transform.rotation = new Quaternion(0, transform.rotation.y, transform.rotation.z, 0);
                         }*/
 
-                        foreach (GameObject otherBuilding in GetComponent<Main>().otherBuildings)
+                        if (!BuildingInstancend)
                         {
-                            if (GetComponent<Main>().getchoosedBuilding() == otherBuilding.name)
+                            foreach (GameObject otherBuilding in GetComponent<Main>().otherBuildings)
                             {
-                                if (BuildingInstancend == false)
+                                if (GetComponent<Main>().getchoosedBuilding() == otherBuilding.name)
                                 {
                                     currentchoosedBuilding = Instantiate(otherBuilding, GetComponent<Main>().ChoosedBuildingPlace.transform.position, GetComponent<Main>().ChoosedBuildingPlace.transform.rotation);
                                     currentchoosedBuilding.name = otherBuilding.name;
-                                    currentchoosedBuilding.GetComponent<House>().enabled = false;
-                                    currentchoosedBuilding.transform.SetParent(GetComponent<Main>().ChoosedBuildingPlace.transform);
-                                    BuildingInstancend = true;
+                                    break;
                                 }
                             }
-                        }
 
-                        foreach (GameObject JobBuilding in GetComponent<Main>().JobBuildings)
-                        {
-                            if (GetComponent<Main>().getchoosedBuilding() == JobBuilding.name)
+                            foreach (GameObject JobBuilding in GetComponent<Main>().JobBuildings)
                             {
-                                if (BuildingInstancend == false)
+                                if (GetComponent<Main>().getchoosedBuilding() == JobBuilding.name)
                                 {
                                     currentchoosedBuilding = Instantiate(JobBuilding, GetComponent<Main>().ChoosedBuildingPlace.transform.position, GetComponent<Main>().ChoosedBuildingPlace.transform.rotation);
                                     currentchoosedBuilding.name = JobBuilding.name;
                                     currentchoosedBuilding.GetComponent<JobBuildings>().enabled = false;
-                                    currentchoosedBuilding.transform.SetParent(GetComponent<Main>().ChoosedBuildingPlace.transform);
-                                    BuildingInstancend = true;
+                                    break;
                                 }
                             }
-                        }
 
-                        foreach (GameObject Building in GetComponent<Main>().BuildingsWithTransmitter)
-                        {
-                            if (GetComponent<Main>().getchoosedBuilding() == Building.name)
+                            foreach (GameObject Building in GetComponent<Main>().BuildingsWithTransmitter)
                             {
-                                if (BuildingInstancend == false)
+                                if (GetComponent<Main>().getchoosedBuilding() == Building.name)
                                 {
                                     currentchoosedBuilding = Instantiate(Building, GetComponent<Main>().ChoosedBuildingPlace.transform.position, GetComponent<Main>().ChoosedBuildingPlace.transform.rotation);
                                     currentchoosedBuilding.name = Building.name;
                                     currentchoosedBuilding.GetComponent<BuildingsWithTransmitter>().enabled = false;
-                                    currentchoosedBuilding.transform.SetParent(GetComponent<Main>().ChoosedBuildingPlace.transform);
-                                    BuildingInstancend = true;
+                                    break;
                                 }
                             }
+                            currentchoosedBuilding.transform.SetParent(GetComponent<Main>().ChoosedBuildingPlace.transform);
+                            BuildingInstancend = true;
                         }
                     }
                 }
@@ -197,6 +191,7 @@ public class choosedObj : MonoBehaviour
             {
                 BuildingsCanvas = Instantiate(GetComponent<Main>().getJobBuildingsCanvas());
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                break;
             }
         }
 
@@ -206,6 +201,7 @@ public class choosedObj : MonoBehaviour
             {
                 BuildingsCanvas = Instantiate(GetComponent<Main>().getBuildingsWithTransmitterCanvas());
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                break;
             }
         }
 
@@ -213,9 +209,16 @@ public class choosedObj : MonoBehaviour
         {
             if (hittedObj.name == otherBuilding.name)
             {
-                BuildingsCanvas = Instantiate(GetComponent<Main>().getotherBuildingsCanvas(hittedObj.name));
+                BuildingsCanvas = Instantiate(GetComponent<Main>().getotherBuildingsCanvas(hittedObj.name + " Canvas"));
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
-                InGame = false;
+
+                foreach (GameObject Building in GetComponent<Main>().BuildingsWithBigCanvasWithoutButton) {
+                    if (otherBuilding.name == Building.name) {
+                        InGame = false;
+                        break;
+                    }
+                }
+                break;
             }
         }
         BuildingsCanvas.GetComponentInParent<getMainCamera>().mainCamera = gameObject;

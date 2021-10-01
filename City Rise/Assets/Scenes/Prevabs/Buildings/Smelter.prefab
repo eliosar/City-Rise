@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -1746589548813057771}
   - component: {fileID: -7194232030779998309}
   - component: {fileID: 8755237385006637066}
-  - component: {fileID: 1945995029730805048}
   m_Layer: 0
   m_Name: Smelter
   m_TagString: Untagged
@@ -167,16 +166,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ILastEntered: {fileID: 0}
   ILastExited: {fileID: 0}
---- !u!114 &1945995029730805048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4884281822616134508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55180af13e41bed4d8e9f4c06c024029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}

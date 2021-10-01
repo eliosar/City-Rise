@@ -10,7 +10,7 @@ public class storedMats : MonoBehaviour
 
     private void Start()
     {
-        MatsAmount = GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsAmount();
+        MatsAmount = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsAmount();
         Mats = new int[MatsAmount];
 
         for (int i = 0; i < MatsAmount; i++)
