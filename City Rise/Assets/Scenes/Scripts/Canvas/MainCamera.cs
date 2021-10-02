@@ -79,31 +79,29 @@ public class MainCamera : MonoBehaviour
 
     public void costingBuildings()
     {
-        InstantiateCanvas(mainCamera.GetComponent<Main>().getcostingBuildingsCanvas(), costingBuildingsButton);
+        InstantiateCanvas(mainCamera.GetComponent<Main>().getcostingBuildingsCanvas());
     }
 
     public void freeBuildings()
     {
-        InstantiateCanvas(mainCamera.GetComponent<Main>().getfreeBuildingsCanvas(), freeBuildingsButton);
+        InstantiateCanvas(mainCamera.GetComponent<Main>().getfreeBuildingsCanvas());
     }
 
-    private void InstantiateCanvas(GameObject whichCanvas, GameObject whichButton)
+    private void InstantiateCanvas(GameObject whichCanvas)
     {
+        GameObject whichButton = null;
         for (int i = 0; i < ButtonsFolder.transform.childCount; i++)
         {
-            GameObject Button = ButtonsFolder.transform.GetChild(i).gameObject;
-
-            if(Button.GetComponent<Button>().interactable == false && Button != whichButton)
+            GameObject Child = ButtonsFolder.transform.GetChild(i).gameObject;
+            Child.GetComponent<Button>().interactable = false;
+            if (Child.transform.childCount > 0)
             {
-                Button.GetComponent<Button>().interactable = true;
+                Destroy(ButtonsFolder.transform.GetChild(i).GetChild(0));
             }
 
-            for (int x = 0; x < ButtonsFolder.transform.childCount; x++)
+            if(Child.name + " Canvas" == whichCanvas.name)
             {
-                if (ButtonsFolder.transform.GetChild(x).childCount > 0)
-                {
-                    Destroy(ButtonsFolder.transform.GetChild(x).GetChild(0));
-                }
+                whichButton = Child;
             }
         }
 
@@ -112,6 +110,7 @@ public class MainCamera : MonoBehaviour
             Destroy(mainCamera.GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).gameObject);
             mainCamera.GetComponent<choosedObj>().setBuildingInstanced(false);
         }
+
         mainCamera.GetComponent<choosedObj>().setinGame(false);
         mainCamera.GetComponent<Main>().setchoosedBuilding(null);
         mainCamera.GetComponent<choosedObj>().setisfreeBuilding(false);
@@ -120,7 +119,18 @@ public class MainCamera : MonoBehaviour
         Canvas.transform.position = transform.position;
         Canvas.transform.SetParent(whichButton.transform);
         Canvas.name = whichCanvas.name;
-        whichButton.GetComponent<Button>().interactable = false;
+    }
+
+    public int RandomNumber(int AmountofBuilding)
+    {
+        int rand = 0;
+
+        if (AmountofBuilding > 1)
+        {
+            rand = Random.Range(0, AmountofBuilding);
+        }
+
+        return rand;
     }
 
     public GameObject getfreeBuildingsButton()
@@ -143,18 +153,6 @@ public class MainCamera : MonoBehaviour
         return mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getTransmitter(Transmitter, RandomNumber(mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getTransmitterPlaced(Transmitter)));
     }
 
-    public int RandomNumber(int AmountofBuilding)
-    {
-        int rand = 0;
-
-        if (AmountofBuilding > 1)
-        {
-            rand = Random.Range(0, AmountofBuilding);
-        }
-
-        return rand;
-    }
-
     public int getMats(int which)
     {
         return Mats[which];
@@ -163,5 +161,10 @@ public class MainCamera : MonoBehaviour
     public int[] getMats()
     {
         return Mats;
+    }
+
+    public GameObject getButtonsFolder()
+    {
+        return ButtonsFolder;
     }
 }

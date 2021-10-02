@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class choosedObj : MonoBehaviour
 {
@@ -212,9 +213,20 @@ public class choosedObj : MonoBehaviour
                 BuildingsCanvas = Instantiate(GetComponent<Main>().getotherBuildingsCanvas(hittedObj.name + " Canvas"));
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
 
-                foreach (GameObject Building in GetComponent<Main>().BuildingsWithBigCanvasWithoutButton) {
-                    if (otherBuilding.name == Building.name) {
+                foreach (GameObject Building in GetComponent<Main>().BuildingsWithBigCanvasWithoutButton)
+                {
+                    if (otherBuilding.name == Building.name)
+                    {
                         InGame = false;
+                        BuildingsCanvas.transform.position = GetComponent<Main>().getMainCameraCanvas().transform.position;
+
+                        for (int i = 0; i < GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getButtonsFolder().transform.childCount; i++)
+                        {
+                            GameObject Child = GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getButtonsFolder().transform.GetChild(i).gameObject;
+
+                            Child.GetComponent<Button>().interactable = false;
+                        }
+
                         break;
                     }
                 }

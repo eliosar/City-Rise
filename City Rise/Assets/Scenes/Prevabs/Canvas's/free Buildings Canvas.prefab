@@ -122,7 +122,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4151016039776737510}
         m_TargetAssemblyTypeName: Scrollboard, Assembly-CSharp
-        m_MethodName: ExitfromcostingBuildingsCanvas
+        m_MethodName: ExitfromfreeBuildingsCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 100
 --- !u!114 &2822335163998843665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 10
+  m_PixelsPerUnitMultiplier: 100
 --- !u!114 &4151016039776737510
 MonoBehaviour:
   m_ObjectHideFlags: 0

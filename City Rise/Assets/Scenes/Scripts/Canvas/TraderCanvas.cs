@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TraderCanvas : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         GameObject Buildings = gameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).gameObject;
@@ -21,12 +20,6 @@ public class TraderCanvas : MonoBehaviour
                 }
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Exit()

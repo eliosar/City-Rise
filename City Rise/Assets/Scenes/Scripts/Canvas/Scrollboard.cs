@@ -27,6 +27,7 @@ public class Scrollboard : MonoBehaviour
                             BuildingButton = Instantiate(Button);
                             BuildingButton.transform.SetParent(Buildings.transform);
                             BuildingButton.name = Button.name;
+                            BuildingButton.GetComponent<Amount>().Number = Array.Amount;
                             choosing();
                             BuildingButton.GetComponent<Button>().onClick.AddListener(ExitfromfreeBuildingsCanvas);
                         }
@@ -44,19 +45,6 @@ public class Scrollboard : MonoBehaviour
                 choosing();
                 BuildingButton.GetComponent<Button>().onClick.AddListener(ExitfromcostingBuildingsCanvas);
                 BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Costs>().buy);
-            }
-        }
-
-        for (int i = 0; i < Buildings.transform.childCount; i++)
-        {
-            GameObject Child = Buildings.transform.GetChild(i).gameObject;
-
-            foreach (StringandNumber.rowData Array in GetComponentInParent<Trader>().getTradesArray())
-            {
-                if (Child.name == Array.Name)
-                {
-                    Child.GetComponent<Amount>().Number = Array.Costs;
-                }
             }
         }
     }
@@ -82,16 +70,16 @@ public class Scrollboard : MonoBehaviour
     {
         Destroy(gameObject);
 
-        GetComponentInParent<MainCamera>().getcostingBuildingsButton().GetComponent<Button>().interactable = true;
-        GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
+        MainCameraCanvas.GetComponentInParent<MainCamera>().getcostingBuildingsButton().GetComponent<Button>().interactable = true;
+        MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
     }
 
     public void ExitfromfreeBuildingsCanvas()
     {
         Destroy(gameObject);
 
-        GetComponentInParent<MainCamera>().getfreeBuildingsButton().GetComponent<Button>().interactable = true;
-        GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
+        MainCameraCanvas.GetComponent<MainCamera>().getfreeBuildingsButton().GetComponent<Button>().interactable = true;
+        MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
     }
 
     private void choosing()

@@ -8,7 +8,7 @@ public class Trader : MonoBehaviour
 
     private void Start()
     {
-        TradesArray = GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getTrades();
+        TradesArray = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getTrades();
     }
 
     public StringandNumber.rowData[] getTradesArray()
