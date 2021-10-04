@@ -85,7 +85,7 @@ public class choosedObj : MonoBehaviour
 
                                 if (isfreeBuilding)
                                 {
-                                    StringandNumber.rowData[] Array = GetComponent<Main>().getfreeBuildingArrays();
+                                    StringandNumber.rowData[] Array = GetComponent<Main>().getBuildingArrays();
 
                                     for (int i = 0; i < Array.Length; i++)
                                     {
@@ -192,6 +192,7 @@ public class choosedObj : MonoBehaviour
             {
                 BuildingsCanvas = Instantiate(GetComponent<Main>().getJobBuildingsCanvas());
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                BuildingsCanvas.name = GetComponent<Main>().getJobBuildingsCanvas().name;
                 break;
             }
         }
@@ -202,6 +203,7 @@ public class choosedObj : MonoBehaviour
             {
                 BuildingsCanvas = Instantiate(GetComponent<Main>().getBuildingsWithTransmitterCanvas());
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                BuildingsCanvas.name = GetComponent<Main>().getBuildingsWithTransmitterCanvas().name;
                 break;
             }
         }
@@ -212,13 +214,14 @@ public class choosedObj : MonoBehaviour
             {
                 BuildingsCanvas = Instantiate(GetComponent<Main>().getotherBuildingsCanvas(hittedObj.name + " Canvas"));
                 BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                BuildingsCanvas.name = hittedObj.name + " Canvas";
 
                 foreach (GameObject Building in GetComponent<Main>().BuildingsWithBigCanvasWithoutButton)
                 {
-                    if (otherBuilding.name == Building.name)
+                    if (Building.name == otherBuilding.name)
                     {
                         InGame = false;
-                        BuildingsCanvas.transform.position = GetComponent<Main>().getMainCameraCanvas().transform.position;
+                        IsBuildingsCanvasOn = false;
 
                         for (int i = 0; i < GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getButtonsFolder().transform.childCount; i++)
                         {
@@ -226,7 +229,6 @@ public class choosedObj : MonoBehaviour
 
                             Child.GetComponent<Button>().interactable = false;
                         }
-
                         break;
                     }
                 }
@@ -259,6 +261,11 @@ public class choosedObj : MonoBehaviour
     public void setinGame(bool set)
     {
         InGame = set;
+    }
+
+    public bool getInGame()
+    {
+        return InGame;
     }
 
     public int getcurrentJobBuildings()

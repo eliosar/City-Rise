@@ -16,11 +16,11 @@ public class Scrollboard : MonoBehaviour
 
         if(gameObject.name == "free Buildings Canvas")
         {
-            foreach (StringandNumber.rowData Array in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getfreeBuildingArrays())
+            foreach (StringandNumber.rowData Array in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getBuildingArrays())
             {
                 if(Array.Amount > 0)
                 {
-                    foreach (RawImage Button in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().freeBuildingsButtons)
+                    foreach (RawImage Button in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().BuildingsButtons)
                     {
                         if(Button.name == Array.Name)
                         {
@@ -29,7 +29,7 @@ public class Scrollboard : MonoBehaviour
                             BuildingButton.name = Button.name;
                             BuildingButton.GetComponent<Amount>().Number = Array.Amount;
                             choosing();
-                            BuildingButton.GetComponent<Button>().onClick.AddListener(ExitfromfreeBuildingsCanvas);
+                            BuildingButton.GetComponent<Button>().onClick.AddListener(Exit);
                         }
                     }
                 }
@@ -37,22 +37,22 @@ public class Scrollboard : MonoBehaviour
         }
         if (gameObject.name == "costing Buildings Canvas")
         {
-            foreach (RawImage Button in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().costingBuildingsButtons)
+            foreach (StringandNumber.rowData Array in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getBuildingArrays())
             {
-                BuildingButton = Instantiate(Button);
-                BuildingButton.transform.SetParent(Buildings.transform);
-                BuildingButton.name = Button.name;
-                choosing();
-                BuildingButton.GetComponent<Button>().onClick.AddListener(ExitfromcostingBuildingsCanvas);
-                BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Costs>().buy);
+                foreach (RawImage Button in MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().BuildingsButtons)
+                {
+                    if (Button.name == Array.Name)
+                    {
+                        BuildingButton = Instantiate(Button);
+                        BuildingButton.transform.SetParent(Buildings.transform);
+                        BuildingButton.name = Button.name;
+                        BuildingButton.GetComponent<Amount>().Costs = Array.Costs;
+                        choosing();
+                        BuildingButton.GetComponent<Button>().onClick.AddListener(Exit);
+                        BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Costs>().buy);
+                    }
+                }
             }
-        }
-    }
-
-    private void Update()
-    {
-        if (gameObject.name == "costingBuildingsCanvas")
-        {
             if (GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getStoragesplaced() >= 4)
             {
                 for (int i = 0; i < Buildings.transform.childCount; i++)
@@ -66,19 +66,10 @@ public class Scrollboard : MonoBehaviour
         }
     }
 
-    public void ExitfromcostingBuildingsCanvas()
+    public void Exit()
     {
         Destroy(gameObject);
 
-        MainCameraCanvas.GetComponentInParent<MainCamera>().getcostingBuildingsButton().GetComponent<Button>().interactable = true;
-        MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
-    }
-
-    public void ExitfromfreeBuildingsCanvas()
-    {
-        Destroy(gameObject);
-
-        MainCameraCanvas.GetComponent<MainCamera>().getfreeBuildingsButton().GetComponent<Button>().interactable = true;
         MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
     }
 

@@ -11,12 +11,11 @@ public class Main : MonoBehaviour
     public GameObject[] JobBuildings;
     public GameObject[] BuildingsWithTransmitter;
     public GameObject[] otherBuildings;
-    public RawImage[] costingBuildingsButtons;
-    public RawImage[] freeBuildingsButtons;
+    public RawImage[] BuildingsButtons;
     public GameObject ChoosedBuildingPlace;
     public GameObject Buildingsplaced;
     private string choosedBuilding;
-    private StringandNumber freeBuildings;
+    private StringandNumber Buildings;
     public StringandNumber Trades;
     private int Storagesplaced = 0;
     private GameObject MainCameraCanvas;
@@ -49,18 +48,18 @@ public class Main : MonoBehaviour
             allBuildings[x + JobBuildings.Length + BuildingsWithTransmitter.Length] = otherBuildings[x];
         }
 
-        freeBuildings.Arrays = new StringandNumber.rowData[allBuildings.Length];
+        Buildings.Arrays = new StringandNumber.rowData[allBuildings.Length];
 
-        for (int i = 0; i < freeBuildings.Arrays.Length; i++)
+        for (int i = 0; i < Buildings.Arrays.Length; i++)
         {
-            freeBuildings.Arrays[i].Name = allBuildings[i].name;
+            Buildings.Arrays[i].Name = allBuildings[i].name;
         }
 
-        for (int i = 0; i < freeBuildings.Arrays.Length; i++)
+        for (int i = 0; i < Buildings.Arrays.Length; i++)
         {
-            if (freeBuildings.Arrays[i].Name == "Storage" || freeBuildings.Arrays[i].Name == "House" || freeBuildings.Arrays[i].Name == "Lumberjack")
+            if (Buildings.Arrays[i].Name == "Storage" || Buildings.Arrays[i].Name == "House" || Buildings.Arrays[i].Name == "Lumberjack")
             {
-                freeBuildings.Arrays[i].Amount = 1;
+                Buildings.Arrays[i].Amount = 1;
             }
         }
 
@@ -162,7 +161,7 @@ public class Main : MonoBehaviour
 
     public StringandNumber.rowData getArray(int which)
     {
-        return freeBuildings.Arrays[which];
+        return Buildings.Arrays[which];
     }
 
     public string getchoosedBuilding()
@@ -175,9 +174,9 @@ public class Main : MonoBehaviour
         choosedBuilding = what;
     }
 
-    public StringandNumber.rowData[] getfreeBuildingArrays()
+    public StringandNumber.rowData[] getBuildingArrays()
     {
-        return freeBuildings.Arrays;
+        return Buildings.Arrays;
     }
 
     public GameObject[] getallBuildings()

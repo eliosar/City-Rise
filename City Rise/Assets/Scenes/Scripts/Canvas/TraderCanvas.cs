@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TraderCanvas : MonoBehaviour
 {
     void Start()
     {
         GameObject Buildings = gameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).gameObject;
+        RawImage Trade;
 
-        for (int i = 0; i < Buildings.transform.childCount; i++)
+        foreach (StringandNumber.rowData Array in GetComponentInParent<Trader>().getTradesArray())
         {
-            GameObject Child = Buildings.transform.GetChild(i).gameObject;
-
-            foreach (StringandNumber.rowData Array in GetComponentInParent<Trader>().getTradesArray())
+            foreach (RawImage Button in transform.parent.parent.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().BuildingsButtons)
             {
-                if(Child.name == Array.Name)
+                if(Button.name == Array.Name)
                 {
-                    Child.GetComponent<Amount>().Number = Array.Amount;
+                    Trade = Instantiate(Button);
+                    Trade.transform.SetParent(Buildings.transform);
+                    Trade.GetComponent<Amount>().Number = Array.Amount;
+                    Trade.GetComponent<Amount>().Costs = Array.Costs;
+                    break;
                 }
             }
         }

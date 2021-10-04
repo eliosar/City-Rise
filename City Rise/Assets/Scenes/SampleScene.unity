@@ -866,17 +866,7 @@ MonoBehaviour:
   - {fileID: 7579050038925044634, guid: d5e24e9502f8f6a40b8a1b7ee4d67838, type: 3}
   - {fileID: 1642635019604331629, guid: 58a090461f3eb6f48baa411a27f34ac6, type: 3}
   - {fileID: 4039862861789409117, guid: 4907fba722dd7c545aedb96b6c2fba33, type: 3}
-  costingBuildingsButtons:
-  - {fileID: 2154069301404521076, guid: de968f6badfa841459beac3656a01d6d, type: 3}
-  - {fileID: 6003167786012499696, guid: 6b7a052b0b5190c4a924246422c4bb33, type: 3}
-  - {fileID: 7286941606183996513, guid: 0f8e477af0abfe548ac0f87671f1fa6f, type: 3}
-  - {fileID: 4375386415950957357, guid: d5e256bd9cba35740a258686f7136364, type: 3}
-  - {fileID: 2230558057786442371, guid: a6ec1c6182864e941a2b09e61d4e0009, type: 3}
-  - {fileID: 7074679766873685116, guid: ce708f7e27018da4b89f3515749514d6, type: 3}
-  - {fileID: 5646669552401435966, guid: b2344ed908ca8a449b98915792616bb5, type: 3}
-  - {fileID: 8899488777280874570, guid: 622da2b663c6c644c82a917537f95d4e, type: 3}
-  - {fileID: 4714009861440464125, guid: 7c2251ba9b26e2e47bfdbf0449b3fe50, type: 3}
-  freeBuildingsButtons:
+  BuildingsButtons:
   - {fileID: 3056622384779361847, guid: c7337cea93403854bb7ab7d40cb197a9, type: 3}
   - {fileID: 6934785816280954366, guid: f3513865f8e2ebb4d8ac8f8f6034aaea, type: 3}
   - {fileID: 4621813874918937754, guid: 59d69b14dced9264d942e492e99da095, type: 3}
@@ -1215,6 +1205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1332558925}
+  - component: {fileID: 1332558926}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1243,6 +1234,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1332558926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332558924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed9c9b3242d31b4bb927bd6400f0553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1361549061
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,4 +5,5 @@ using UnityEngine;
 public class Amount : MonoBehaviour
 {
     public int Number;
+    public int Costs;
 }
