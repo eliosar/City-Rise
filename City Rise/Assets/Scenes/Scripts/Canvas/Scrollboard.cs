@@ -27,8 +27,8 @@ public class Scrollboard : MonoBehaviour
                             BuildingButton = Instantiate(Button);
                             BuildingButton.transform.SetParent(Buildings.transform);
                             BuildingButton.name = Button.name;
-                            BuildingButton.GetComponent<Amount>().Number = Array.Amount;
-                            choosing();
+                            BuildingButton.GetComponent<Amount>().setNumber(Array.Amount);
+                            BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Amount>().choosedBuilding);
                             BuildingButton.GetComponent<Button>().onClick.AddListener(Exit);
                         }
                     }
@@ -46,8 +46,8 @@ public class Scrollboard : MonoBehaviour
                         BuildingButton = Instantiate(Button);
                         BuildingButton.transform.SetParent(Buildings.transform);
                         BuildingButton.name = Button.name;
-                        BuildingButton.GetComponent<Amount>().Costs = Array.Costs;
-                        choosing();
+                        BuildingButton.GetComponent<Amount>().setCosts(Array.Costs);
+                        BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Amount>().choosedBuilding);
                         BuildingButton.GetComponent<Button>().onClick.AddListener(Exit);
                         BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Costs>().buy);
                     }
@@ -71,100 +71,10 @@ public class Scrollboard : MonoBehaviour
         Destroy(gameObject);
 
         MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
-    }
-
-    private void choosing()
-    {
-        if(BuildingButton.name == "Lumberjack")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedLumberjack);
-        }
-        if (BuildingButton.name == "House")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedHouse);
-        }
-        if (BuildingButton.name == "Storage")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedStorage);
-        }
-        if (BuildingButton.name == "Mine")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedMine);
-        }
-        if (BuildingButton.name == "Smelter")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedSmelter);
-        }
-        if (BuildingButton.name == "Barn")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedBarn);
-        }
-        if (BuildingButton.name == "Butcher")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedButcher);
-        }
-        if (BuildingButton.name == "Fisher")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedFisher);
-        }
-        if (BuildingButton.name == "Farmer")
-        {
-            BuildingButton.GetComponent<Button>().onClick.AddListener(choosedFarmer);
-        }
-    }
-
-    public void choosedLumberjack()
-    {
-        choosedBuilding("Lumberjack");
-    }
-
-    public void choosedHouse()
-    {
-        choosedBuilding("House");
-    }
-
-    public void choosedStorage()
-    {
-        choosedBuilding("Storage");
-    }
-
-    public void choosedMine()
-    {
-        choosedBuilding("Mine");
-    }
-
-    public void choosedSmelter()
-    {
-        choosedBuilding("Smelter");
-    }
-
-    public void choosedBarn()
-    {
-        choosedBuilding("Barn");
-    }
-
-    public void choosedButcher()
-    {
-        choosedBuilding("Butcher");
-    }
-
-    public void choosedFisher()
-    {
-        choosedBuilding("Fisher");
-    }
-
-    public void choosedFarmer()
-    {
-        choosedBuilding("Farmer");
-    }
-
-    private void choosedBuilding(string what)
-    {
+        
         if (gameObject.name == "free Buildings Canvas")
         {
             GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setisfreeBuilding(true);
         }
-
-        GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().setchoosedBuilding(what);
     }
 }

@@ -16,17 +16,16 @@ public class AmountsButtons : MonoBehaviour
 
             if (Child.name == "Cost")
             {
-                if (BuildingsCanvas.name != "free Buildings Canvas" || GetComponent<Amount>().Costs != 0)
+                if (BuildingsCanvas.name != "free Buildings Canvas" && GetComponent<Amount>().getCosts() > 0)
                 {
-                    Debug.Log(GetComponent<Amount>().Costs);
-                    Child.GetComponent<Text>().text = GetComponent<Amount>().Costs + "";
+                    Child.GetComponent<Text>().text = GetComponent<Amount>().getCosts() + "";
                 }
             }
             if(Child.name == "Amount")
             {
-                if (GetComponent<Amount>().Number > 1)
+                if (GetComponent<Amount>().getNumber() > 1)
                 {
-                    Child.GetComponent<Text>().text = GetComponent<Amount>().Number + "";
+                    Child.GetComponent<Text>().text = GetComponent<Amount>().getNumber() + "";
                 }
             }
         }

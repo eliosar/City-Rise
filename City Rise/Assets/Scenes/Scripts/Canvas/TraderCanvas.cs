@@ -12,14 +12,17 @@ public class TraderCanvas : MonoBehaviour
 
         foreach (StringandNumber.rowData Array in GetComponentInParent<Trader>().getTradesArray())
         {
-            foreach (RawImage Button in transform.parent.parent.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().BuildingsButtons)
+            foreach (RawImage Button in transform.parent.parent.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().MatsButtons)
             {
                 if(Button.name == Array.Name)
                 {
                     Trade = Instantiate(Button);
                     Trade.transform.SetParent(Buildings.transform);
-                    Trade.GetComponent<Amount>().Number = Array.Amount;
-                    Trade.GetComponent<Amount>().Costs = Array.Costs;
+                    Trade.GetComponent<Amount>().setNumber(Array.Amount);
+                    Trade.GetComponent<Amount>().setCosts(Array.Costs);
+                    Trade.GetComponent<Button>().onClick.AddListener(Trade.GetComponent<Amount>().buyMats);
+                    Trade.GetComponent<Button>().onClick.AddListener(Exit);
+                    Trade.name = Button.name;
                     break;
                 }
             }

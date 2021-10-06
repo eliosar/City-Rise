@@ -93,9 +93,8 @@ GameObject:
   - component: {fileID: 6411453093020402511}
   - component: {fileID: 4740453145771644010}
   - component: {fileID: 8636299158204206381}
-  - component: {fileID: -3809337762384242709}
   m_Layer: 5
-  m_Name: Barn
+  m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +149,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 0039e049b5a267c408fa400e72585fe1, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -251,19 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce5738097b5c84a8f45e0a74346e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3809337762384242709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135612575077353999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d4a46e2138e2b4faca6775580240b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rubins: 0
 --- !u!1 &3916874643119921557
 GameObject:
   m_ObjectHideFlags: 0

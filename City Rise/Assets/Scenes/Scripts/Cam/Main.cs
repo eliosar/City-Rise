@@ -12,6 +12,7 @@ public class Main : MonoBehaviour
     public GameObject[] BuildingsWithTransmitter;
     public GameObject[] otherBuildings;
     public RawImage[] BuildingsButtons;
+    public RawImage[] MatsButtons;
     public GameObject ChoosedBuildingPlace;
     public GameObject Buildingsplaced;
     private string choosedBuilding;

@@ -13,6 +13,7 @@ public class Costs : MonoBehaviour
     private void Start()
     {
         MainCameraCanvas = gameObject;
+
         while(MainCameraCanvas.name != "Main Camera Canvas")
         {
             MainCameraCanvas = MainCameraCanvas.transform.parent.gameObject;

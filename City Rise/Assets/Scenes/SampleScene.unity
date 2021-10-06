@@ -876,6 +876,15 @@ MonoBehaviour:
   - {fileID: 7904652193459244948, guid: 9fcdf9a8d4566514f9a56f5dde8223ad, type: 3}
   - {fileID: 3200477333397442681, guid: 48babe158039cd1468e93569bab99e1f, type: 3}
   - {fileID: 8398561119434417936, guid: 4e5761cb0e77ea54a9cc126b3b133b24, type: 3}
+  MatsButtons:
+  - {fileID: 3056622384779361847, guid: 2c7d0ad9abc1cad40a17da2f6f82b4c4, type: 3}
+  - {fileID: 3056622384779361847, guid: 216e595461654094eab0318e88aef899, type: 3}
+  - {fileID: 3056622384779361847, guid: 1781a809a4ec3fa43ad8314c548cf79c, type: 3}
+  - {fileID: 3056622384779361847, guid: ce5eab9868adf5145952c391f77bc249, type: 3}
+  - {fileID: 3056622384779361847, guid: 0d66f3cfeb633a642805c836d41a0c9e, type: 3}
+  - {fileID: 3056622384779361847, guid: 64737da793e54cd438da77a8fe233765, type: 3}
+  - {fileID: 3056622384779361847, guid: 734f6c7ac922ebd45a2333f090a8cdd0, type: 3}
+  - {fileID: 3056622384779361847, guid: c7337cea93403854bb7ab7d40cb197a9, type: 3}
   ChoosedBuildingPlace: {fileID: 594207196}
   Buildingsplaced: {fileID: 614259767}
   Trades:

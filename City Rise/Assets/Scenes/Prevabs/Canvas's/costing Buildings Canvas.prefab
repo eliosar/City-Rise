@@ -371,7 +371,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8362386556228969252}
         m_TargetAssemblyTypeName: Scrollboard, Assembly-CSharp
-        m_MethodName: ExitfromcostingBuildingsCanvas
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
