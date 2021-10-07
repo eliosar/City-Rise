@@ -8,13 +8,11 @@ public class Buildings : MonoBehaviour
     private int TransmitterPlaced;
     private int totalPeopleforBuildings = 0;
     private int allmaxPeopleInBuildings = 0;
-    private int storagePlaced;
     private GameObject MainCamera;
 
     private void Update()
     {
         MainCamera = GetComponent<getMainCamera>().mainCamera;
-        storagePlaced = MainCamera.GetComponent<Main>().getStoragesplaced();
         int currentChilds = transform.childCount;
         int Worker = 0;
         int freeWorker;
@@ -124,6 +122,11 @@ public class Buildings : MonoBehaviour
     public GameObject getStorage(int which)
     {
         return Storage[which];
+    }
+
+    public GameObject getrandomStorage()
+    {
+        return Storage[MainCamera.GetComponent<Main>().RandomNumber(Storage.Length)];
     }
 
     public GameObject getTransmitter(GameObject Transmitter, int which)

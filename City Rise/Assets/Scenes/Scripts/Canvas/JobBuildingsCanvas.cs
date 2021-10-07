@@ -57,7 +57,7 @@ public class JobBuildingsCanvas : MonoBehaviour
 
         ymindiff = y - different;
         currentProductAmount = GetComponentInParent<JobBuildings>().getcurrentProductAmount(ymindiff);
-        MainCameraCanvas.GetComponent<MainCamera>().getrandomStorage().GetComponent<storedMats>().addMats(y, currentProductAmount);
+        transform.parent.parent.GetComponent<Buildings>().getrandomStorage().GetComponent<storedMats>().addMats(y, currentProductAmount);
         GetComponentInParent<JobBuildings>().takeawaycurrentProductamount(ymindiff, currentProductAmount);
     }
 }

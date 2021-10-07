@@ -121,18 +121,6 @@ public class MainCamera : MonoBehaviour
         Canvas.name = whichCanvas.name;
     }
 
-    public int RandomNumber(int AmountofBuilding)
-    {
-        int rand = 0;
-
-        if (AmountofBuilding > 1)
-        {
-            rand = Random.Range(0, AmountofBuilding);
-        }
-
-        return rand;
-    }
-
     public GameObject getfreeBuildingsButton()
     {
         return freeBuildingsButton;
@@ -141,16 +129,6 @@ public class MainCamera : MonoBehaviour
     public GameObject getcostingBuildingsButton()
     {
         return costingBuildingsButton;
-    }
-
-    public GameObject getrandomStorage()
-    {
-        return mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getStorage(RandomNumber(mainCamera.GetComponent<Main>().getStoragesplaced()));
-    }
-
-    public GameObject getrandomTransmitter(GameObject Transmitter)
-    {
-        return mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getTransmitter(Transmitter, RandomNumber(mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getTransmitterPlaced(Transmitter)));
     }
 
     public int getMats(int which)

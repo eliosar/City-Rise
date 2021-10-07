@@ -7,6 +7,7 @@ public class TraderCanvas : MonoBehaviour
 {
     void Start()
     {
+        GameObject MainCamera = transform.parent.parent.GetComponent<getMainCamera>().mainCamera;
         GameObject Buildings = gameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).gameObject;
         RawImage Trade;
 
@@ -22,6 +23,12 @@ public class TraderCanvas : MonoBehaviour
                     Trade.GetComponent<Amount>().setCosts(Array.Costs);
                     Trade.GetComponent<Button>().onClick.AddListener(Trade.GetComponent<Amount>().buyMats);
                     Trade.GetComponent<Button>().onClick.AddListener(Exit);
+
+                    if (Array.Costs < MainCamera.GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getMats(MainCamera.GetComponent<Main>().getMatsPlace(Button.name)))
+                    {
+                        Trade.GetComponent<Button>().interactable = false;
+                    }
+
                     Trade.name = Button.name;
                     break;
                 }

@@ -21,8 +21,6 @@ public class Main : MonoBehaviour
     private int Storagesplaced = 0;
     private GameObject MainCameraCanvas;
     private GameObject JobBuildingsCanvas;
-    private GameObject HouseCanvas;
-    private GameObject StorageCanvas;
     private GameObject BuildingsWithTransmitterCanvas;
     private GameObject costingBuildingsCanvas;
     private GameObject freeBuildingsCanvas;
@@ -115,6 +113,37 @@ public class Main : MonoBehaviour
         return Canvas;
     }
 
+    public int RandomNumber(int maxAmount)
+    {
+        int rand = 0;
+
+        if (maxAmount > 1)
+        {
+            rand = Random.Range(0, maxAmount);
+        }
+
+        return rand;
+    }
+
+    public int getMatsPlace(string which)
+    {
+        int Place = 0;
+
+        foreach (string MatName in MatsNames)
+        {
+            if(MatName == which)
+            {
+                break;
+            }
+            else
+            {
+                Place += 1;
+            }
+        }
+
+        return Place;
+    }
+
     public GameObject getfreeBuildingsCanvas()
     {
         return freeBuildingsCanvas;
@@ -138,16 +167,6 @@ public class Main : MonoBehaviour
     public GameObject getJobBuildingsCanvas()
     {
         return JobBuildingsCanvas;
-    }
-
-    public GameObject getHouseCanvas()
-    {
-        return HouseCanvas;
-    }
-
-    public GameObject getStorageCanvas()
-    {
-        return StorageCanvas;
     }
 
     public void addStoragesplaced(int add)

@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class BuildingsWithTransmitterCanvas : MonoBehaviour
 {
     private GameObject MainCameraCanvas;
+    private GameObject Buildingsplaced;
 
     private void Start()
     {
+        Buildingsplaced = transform.parent.parent.gameObject;
         MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();
     }
     void Update()
@@ -54,7 +56,7 @@ public class BuildingsWithTransmitterCanvas : MonoBehaviour
 
         ymindiff = y - different;
         currentProductAmount = GetComponentInParent<BuildingsWithTransmitter>().getMat(ymindiff);
-        MainCameraCanvas.GetComponent<MainCamera>().getrandomTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter).GetComponent<JobBuildings>().addtransmittetMats(y, currentProductAmount);
+        Buildingsplaced.GetComponent<Buildings>().getTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter, MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().RandomNumber(Buildingsplaced.GetComponent<Buildings>().getTransmitterPlaced(GetComponentInParent<BuildingsWithTransmitter>().Transmitter))).GetComponent<JobBuildings>().addtransmittetMats(y, currentProductAmount);
         GetComponentInParent<BuildingsWithTransmitter>().takeawayMatsamount(ymindiff, currentProductAmount);
     }
 

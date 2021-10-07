@@ -7,6 +7,7 @@ public class Costs : MonoBehaviour
 {
     public int Rubins;
     private GameObject MainCameraCanvas;
+    private GameObject MainCamera;
     private int[] storedRubinsAmount;
     private int RubinPlace;
 
@@ -18,6 +19,8 @@ public class Costs : MonoBehaviour
         {
             MainCameraCanvas = MainCameraCanvas.transform.parent.gameObject;
         }
+
+        MainCamera = MainCameraCanvas.GetComponent<getMainCamera>().mainCamera;
 
         for (int i = 0; i < MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().MatsNames.Length; i++)
         {
@@ -83,7 +86,7 @@ public class Costs : MonoBehaviour
 
             for (int x = 0; x < 1; x++)
             {
-                GameObject Storage = Buildings.GetComponent<Buildings>().getStorage(MainCameraCanvas.GetComponent<MainCamera>().RandomNumber(MainCameraCanvas.GetComponent<Main>().getStoragesplaced()));
+                GameObject Storage = Buildings.GetComponent<Buildings>().getStorage(MainCamera.GetComponent<Main>().RandomNumber(MainCameraCanvas.GetComponent<Main>().getStoragesplaced()));
 
                 if (Storage.GetComponent<storedMats>().getMats(RubinPlace) > 0)
                 {
