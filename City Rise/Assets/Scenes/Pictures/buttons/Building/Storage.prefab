@@ -237,8 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbfea391362c6d418e9a6c8979d8de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Number: 1
-  Costs: 0
 --- !u!114 &-6989820246173343476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d4a46e2138e2b4faca6775580240b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rubins: 0
+  Rubins: 1
 --- !u!1 &7564734676316017914
 GameObject:
   m_ObjectHideFlags: 0

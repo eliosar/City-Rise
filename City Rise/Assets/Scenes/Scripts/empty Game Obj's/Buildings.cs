@@ -152,7 +152,7 @@ public class Buildings : MonoBehaviour
 
     public GameObject getrandomTransmitter(GameObject Transmitter)
     {
-        return getTransmitter(Transmitter, GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().RandomNumber(getTransmitterPlaced(GetComponentInParent<BuildingsWithTransmitter>().Transmitter)));
+        return getTransmitter(Transmitter, GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().RandomNumber(getTransmitterPlaced(Transmitter)));
     }
 
     public int getTransmitterPlaced(GameObject Transmitter)
