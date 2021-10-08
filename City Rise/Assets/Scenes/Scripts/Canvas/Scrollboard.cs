@@ -49,11 +49,16 @@ public class Scrollboard : MonoBehaviour
                         BuildingButton.GetComponent<Amount>().setCosts(Array.Costs);
                         BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Amount>().choosedBuilding);
                         BuildingButton.GetComponent<Button>().onClick.AddListener(Exit);
-                        BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Costs>().buy);
+                        BuildingButton.GetComponent<Button>().onClick.AddListener(BuildingButton.GetComponent<Amount>().buyBuildings);
+
+                        if(MainCameraCanvas.GetComponent<MainCamera>().getMats(MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace("Rubins")) < BuildingButton.GetComponent<Costs>().Rubins)
+                        {
+                            BuildingButton.GetComponent<Button>().interactable = false;
+                        }
                     }
                 }
             }
-            if (GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getStoragesplaced() >= 4)
+            if (GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getStoragesplaced() >= 4)
             {
                 for (int i = 0; i < Buildings.transform.childCount; i++)
                 {

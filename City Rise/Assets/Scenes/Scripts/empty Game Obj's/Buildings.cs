@@ -6,6 +6,7 @@ public class Buildings : MonoBehaviour
 {
     private GameObject[] Storage = new GameObject[4];
     private int TransmitterPlaced;
+    private int Storagesplaced;
     private int totalPeopleforBuildings = 0;
     private int allmaxPeopleInBuildings = 0;
     private GameObject MainCamera;
@@ -126,7 +127,7 @@ public class Buildings : MonoBehaviour
 
     public GameObject getrandomStorage()
     {
-        return Storage[MainCamera.GetComponent<Main>().RandomNumber(Storage.Length)];
+        return Storage[MainCamera.GetComponent<Main>().RandomNumber(Storagesplaced)];
     }
 
     public GameObject getTransmitter(GameObject Transmitter, int which)
@@ -147,6 +148,11 @@ public class Buildings : MonoBehaviour
         }
 
         return Transmitt[which];
+    }
+
+    public GameObject getrandomTransmitter(GameObject Transmitter)
+    {
+        return getTransmitter(Transmitter, GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().RandomNumber(getTransmitterPlaced(GetComponentInParent<BuildingsWithTransmitter>().Transmitter)));
     }
 
     public int getTransmitterPlaced(GameObject Transmitter)
@@ -173,5 +179,15 @@ public class Buildings : MonoBehaviour
     public void addallmaxPeopleInBuildings(int add)
     {
         allmaxPeopleInBuildings += add;
+    }
+
+    public void addStoragesplaced(int add)
+    {
+        Storagesplaced += add;
+    }
+
+    public int getStoragesplaced()
+    {
+        return Storagesplaced;
     }
 }

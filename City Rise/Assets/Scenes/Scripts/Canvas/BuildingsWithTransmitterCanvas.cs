@@ -56,7 +56,7 @@ public class BuildingsWithTransmitterCanvas : MonoBehaviour
 
         ymindiff = y - different;
         currentProductAmount = GetComponentInParent<BuildingsWithTransmitter>().getMat(ymindiff);
-        Buildingsplaced.GetComponent<Buildings>().getTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter, MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().RandomNumber(Buildingsplaced.GetComponent<Buildings>().getTransmitterPlaced(GetComponentInParent<BuildingsWithTransmitter>().Transmitter))).GetComponent<JobBuildings>().addtransmittetMats(y, currentProductAmount);
+        Buildingsplaced.GetComponent<Buildings>().getrandomTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter).GetComponent<JobBuildings>().addtransmittetMats(y, currentProductAmount);
         GetComponentInParent<BuildingsWithTransmitter>().takeawayMatsamount(ymindiff, currentProductAmount);
     }
 

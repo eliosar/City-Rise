@@ -18,7 +18,6 @@ public class Main : MonoBehaviour
     private string choosedBuilding;
     private StringandNumber Buildings;
     public StringandNumber Trades;
-    private int Storagesplaced = 0;
     private GameObject MainCameraCanvas;
     private GameObject JobBuildingsCanvas;
     private GameObject BuildingsWithTransmitterCanvas;
@@ -167,16 +166,6 @@ public class Main : MonoBehaviour
     public GameObject getJobBuildingsCanvas()
     {
         return JobBuildingsCanvas;
-    }
-
-    public void addStoragesplaced(int add)
-    {
-        Storagesplaced += add;
-    }
-
-    public int getStoragesplaced()
-    {
-        return Storagesplaced;
     }
 
     public StringandNumber.rowData getArray(int which)

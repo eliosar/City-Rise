@@ -10,36 +10,35 @@ public class Amount : MonoBehaviour
     private GameObject Canvas;
     private GameObject Buildingsplaced;
     private GameObject MainCamera;
-    private GameObject MainCameraCanvas;
 
     private void Start()
     {
         Canvas = transform.parent.parent.parent.parent.parent.gameObject;
-        Buildingsplaced = Canvas.transform.parent.gameObject;
 
         MainCamera = Canvas;
 
-        while (MainCamera.name != "Buildings placed" || MainCamera.name != "Main Camera Canvas")
+        while (MainCamera.name != "Buildings placed" && MainCamera.name != "Main Camera Canvas")
         {
             MainCamera = MainCamera.transform.parent.gameObject;
-            Debug.Log("Main Camera: " + MainCamera.name);
         }
 
         MainCamera = MainCamera.GetComponent<getMainCamera>().mainCamera;
-        
-        MainCameraCanvas = MainCamera.GetComponent<Main>().getMainCameraCanvas();
     }
 
     public void buyMats()
     {
+        GameObject Storage = null;
+        Buildingsplaced = Canvas.transform.parent.parent.gameObject;
+
         for (int i = 0; i < 1; i++)
         {
-            GameObject Storage = Buildingsplaced.GetComponent<Buildings>().getStorage(MainCamera.GetComponent<Main>().RandomNumber(MainCamera.GetComponent<Main>().getStoragesplaced()));
-            int maxMats = Storage.GetComponent<storedMats>().getMats(MainCamera.GetComponent<Main>().getMatsPlace(Canvas.name));
+            Storage = Buildingsplaced.GetComponent<Buildings>().getrandomStorage();
+            int Matsplace = MainCamera.GetComponent<Main>().getMatsPlace(gameObject.name);
+            int maxMats = Storage.GetComponent<storedMats>().getMats(Matsplace);
 
             if (maxMats < Costs)
             {
-                Storage.GetComponent<storedMats>().takeMats(MainCamera.GetComponent<Main>().getMatsPlace(Canvas.name), maxMats);
+                Storage.GetComponent<storedMats>().takeMats(Matsplace, maxMats);
 
                 Costs -= maxMats;
 
@@ -47,7 +46,36 @@ public class Amount : MonoBehaviour
             }
             else
             {
-                Storage.GetComponent<storedMats>().takeMats(MainCamera.GetComponent<Main>().getMatsPlace(Canvas.name), Costs);
+                Storage.GetComponent<storedMats>().takeMats(Matsplace, Costs);
+                Costs = 0;
+            }
+        }
+
+        Storage.GetComponent<storedMats>().addMats(MainCamera.GetComponent<Main>().getMatsPlace("Rubins"), Number);
+    }
+
+    public void buyBuildings()
+    {
+        GameObject Storage = null;
+        Buildingsplaced = Canvas.transform.parent.parent.parent.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().Buildingsplaced;
+
+        for (int i = 0; i < 1; i++)
+        {
+            Storage = Buildingsplaced.GetComponent<Buildings>().getrandomStorage();
+            int Matsplace = MainCamera.GetComponent<Main>().getMatsPlace("Rubins");
+            int maxMats = Storage.GetComponent<storedMats>().getMats(Matsplace);
+
+            if (maxMats < GetComponent<Costs>().Rubins)
+            {
+                Storage.GetComponent<storedMats>().takeMats(Matsplace, maxMats);
+                GetComponent<Costs>().Rubins -= maxMats;
+
+                i -= 1;
+            }
+            else
+            {
+                Storage.GetComponent<storedMats>().takeMats(Matsplace, GetComponent<Costs>().Rubins);
+                GetComponent<Costs>().Rubins -= Costs;
             }
         }
     }

@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class JobBuildingsCanvas : MonoBehaviour
 {
-    // Update is called once per frame
+    private GameObject Buildingsplaced;
+
+    private void Start()
+    {
+        Buildingsplaced = transform.parent.parent.gameObject;
+    }
     void Update()
     {
         transform.GetChild(0).GetComponent<Text>().text = transform.parent.name + "\n\n" + GetComponentInParent<JobBuildings>().getcurrentPeopleInBuilding() + " / " + GetComponentInParent<JobBuildings>().maxPeopleInBuilding + " Peoples in Building\n";
@@ -33,31 +38,24 @@ public class JobBuildingsCanvas : MonoBehaviour
 
     private void ProductHandOver(string Name1)
     {
-        int y = 0;
+        int currentMatplace = Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace(Name1);
         int i = 0;
         int different = 0;
-        int ymindiff = 0;
-        int currentProductAmount = 0;
         GameObject MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();
 
         foreach (string Name in MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsNames)
         {
-            if (Name == Name1)
-            {
-                y = i;
-            }
-
             if (Name == GetComponentInParent<JobBuildings>().MatsName[0])
             {
                 different = i;
+                break;
             }
 
             i += 1;
         }
 
-        ymindiff = y - different;
-        currentProductAmount = GetComponentInParent<JobBuildings>().getcurrentProductAmount(ymindiff);
-        transform.parent.parent.GetComponent<Buildings>().getrandomStorage().GetComponent<storedMats>().addMats(y, currentProductAmount);
-        GetComponentInParent<JobBuildings>().takeawaycurrentProductamount(ymindiff, currentProductAmount);
+        int currentProductAmount = GetComponentInParent<JobBuildings>().getcurrentProductAmount(currentMatplace - different);
+        Buildingsplaced.GetComponent<Buildings>().getrandomStorage().GetComponent<storedMats>().addMats(currentMatplace, currentProductAmount);
+        GetComponentInParent<JobBuildings>().takeawaycurrentProductamount(currentMatplace - different, currentProductAmount);
     }
 }

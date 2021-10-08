@@ -24,7 +24,7 @@ public class TraderCanvas : MonoBehaviour
                     Trade.GetComponent<Button>().onClick.AddListener(Trade.GetComponent<Amount>().buyMats);
                     Trade.GetComponent<Button>().onClick.AddListener(Exit);
 
-                    if (Array.Costs < MainCamera.GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getMats(MainCamera.GetComponent<Main>().getMatsPlace(Button.name)))
+                    if (MainCamera.GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getMats(MainCamera.GetComponent<Main>().getMatsPlace(Array.Name)) < Array.Costs)
                     {
                         Trade.GetComponent<Button>().interactable = false;
                     }

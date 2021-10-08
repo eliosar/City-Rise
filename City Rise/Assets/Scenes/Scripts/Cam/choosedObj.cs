@@ -13,6 +13,8 @@ public class choosedObj : MonoBehaviour
     private GameObject BuildingsCanvas;
     private GameObject currentchoosedBuilding;
     private GameObject lasthittetObj;
+    private GameObject Buildingsplaced;
+    private GameObject ChoosedBuildingPlace;
     private bool IsBuildingsCanvasOn = false;
     private bool BuildingInstancend = false;
     private bool NotInObj = true;
@@ -20,6 +22,12 @@ public class choosedObj : MonoBehaviour
     private bool isfreeBuilding = false;
     private int currentJobBuildings = 0;
     private int currentBuildingsWithTransmitter = 0;
+
+    private void Start()
+    {
+        Buildingsplaced = GetComponent<Main>().Buildingsplaced;
+        ChoosedBuildingPlace = GetComponent<Main>().ChoosedBuildingPlace;
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,15 +50,15 @@ public class choosedObj : MonoBehaviour
                         {
                             if (NotInObj)
                             {
-                                GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsScript>().setIsPlaced(true);
+                                ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsScript>().setIsPlaced(true);
 
                                 foreach (GameObject JobBuilding in GetComponent<Main>().JobBuildings)
                                 {
                                     if (GetComponent<Main>().getchoosedBuilding() == JobBuilding.name)
                                     {
                                         currentJobBuildings += 1;
-                                        GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<JobBuildings>().enabled = true;
-                                        GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().addallmaxPeopleInBuildings(GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<JobBuildings>().maxPeopleInBuilding);
+                                        ChoosedBuildingPlace.transform.GetChild(0).GetComponent<JobBuildings>().enabled = true;
+                                        Buildingsplaced.GetComponent<Buildings>().addallmaxPeopleInBuildings(ChoosedBuildingPlace.transform.GetChild(0).GetComponent<JobBuildings>().maxPeopleInBuilding);
                                         break;
                                     }
                                 }
@@ -60,24 +68,24 @@ public class choosedObj : MonoBehaviour
                                     if (GetComponent<Main>().getchoosedBuilding() == Building.name)
                                     {
                                         currentBuildingsWithTransmitter += 1;
-                                        GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsWithTransmitter>().enabled = true;
+                                        ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsWithTransmitter>().enabled = true;
 
-                                        GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().addallmaxPeopleInBuildings(GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsWithTransmitter>().maxPeopleInBuilding);
+                                        Buildingsplaced.GetComponent<Buildings>().addallmaxPeopleInBuildings(ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsWithTransmitter>().maxPeopleInBuilding);
                                         break;
                                     }
                                 }
 
                                 if (GetComponent<Main>().getchoosedBuilding() == "House")
                                 {
-                                    GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<House>().enabled = true;
-                                    GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().addtotalPeopleforBuildings(GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).GetComponent<House>().PeopleInBuilding);
+                                    ChoosedBuildingPlace.transform.GetChild(0).GetComponent<House>().enabled = true;
+                                    Buildingsplaced.GetComponent<Buildings>().addtotalPeopleforBuildings(ChoosedBuildingPlace.transform.GetChild(0).GetComponent<House>().PeopleInBuilding);
                                 }
 
                                 if (GetComponent<Main>().getchoosedBuilding() == "Storage")
                                 {
                                     int currentBuildings = GetComponent<Main>().Buildingsplaced.transform.childCount;
-                                    GetComponent<Main>().addStoragesplaced(1);
-                                    GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().setStorageplaced(GetComponent<Main>().getStoragesplaced() - 1, GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).gameObject);
+                                    Buildingsplaced.GetComponent<Buildings>().addStoragesplaced(1);
+                                    Buildingsplaced.GetComponent<Buildings>().setStorageplaced(Buildingsplaced.GetComponent<Buildings>().getStoragesplaced() - 1, ChoosedBuildingPlace.transform.GetChild(0).gameObject);
                                 }
 
                                 GetComponent<Main>().setchoosedBuilding(null);
@@ -89,14 +97,14 @@ public class choosedObj : MonoBehaviour
 
                                     for (int i = 0; i < Array.Length; i++)
                                     {
-                                        if(Array[i].Name == GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).name)
+                                        if(Array[i].Name == ChoosedBuildingPlace.transform.GetChild(0).name)
                                         {
                                             Array[i].Amount -= 1;
                                         }
                                     }
                                     isfreeBuilding = false;
                                 }
-                                GetComponent<Main>().ChoosedBuildingPlace.transform.GetChild(0).gameObject.transform.SetParent(GetComponent<Main>().Buildingsplaced.transform);
+                                ChoosedBuildingPlace.transform.GetChild(0).gameObject.transform.SetParent(GetComponent<Main>().Buildingsplaced.transform);
                             }
                         }
                         else
@@ -113,9 +121,9 @@ public class choosedObj : MonoBehaviour
                                 }
                                 else
                                 {
-                                    CanvasInstantiation();
-
                                     IsBuildingsCanvasOn = true;
+
+                                    CanvasInstantiation();
                                 }
                                 lasthittetObj = hittedObj;
                             }
@@ -126,20 +134,20 @@ public class choosedObj : MonoBehaviour
                     {
                         if (hittedObj.name == "Terrain (1)")
                         {
-                            GetComponent<Main>().ChoosedBuildingPlace.transform.position = posHit;
-                            GetComponent<Main>().ChoosedBuildingPlace.transform.rotation = new Quaternion(0, transform.rotation.y, transform.rotation.z, 0);
+                            ChoosedBuildingPlace.transform.position = posHit;
+                            ChoosedBuildingPlace.transform.rotation = new Quaternion(0, transform.rotation.y, transform.rotation.z, 0);
                         }
                         /*if (hittedCol is SphereCollider)
                         {
                             Debug.Log("Sphere");
-                            while (GetComponent<Main>().ChoosedBuildingPlace.GetComponent<choosedBuildingPlace>().Terrainhitted == false)
+                            while (ChoosedBuildingPlace.GetComponent<choosedBuildingPlace>().Terrainhitted == false)
                             {
                                 Debug.Log("false");
-                                GetComponent<Main>().ChoosedBuildingPlace.transform.rotation = transform.rotation;
-                                GetComponent<Main>().ChoosedBuildingPlace.transform.position += new Vector3(0, 0.5f, 0);
+                                ChoosedBuildingPlace.transform.rotation = transform.rotation;
+                                ChoosedBuildingPlace.transform.position += new Vector3(0, 0.5f, 0);
                             }
-                            GetComponent<Main>().ChoosedBuildingPlace.GetComponent<choosedBuildingPlace>().Terrainhitted = true;
-                            GetComponent<Main>().ChoosedBuildingPlace.transform.rotation = new Quaternion(0, transform.rotation.y, transform.rotation.z, 0);
+                            ChoosedBuildingPlace.GetComponent<choosedBuildingPlace>().Terrainhitted = true;
+                            ChoosedBuildingPlace.transform.rotation = new Quaternion(0, transform.rotation.y, transform.rotation.z, 0);
                         }*/
 
                         if (!BuildingInstancend)
@@ -148,7 +156,7 @@ public class choosedObj : MonoBehaviour
                             {
                                 if (GetComponent<Main>().getchoosedBuilding() == otherBuilding.name)
                                 {
-                                    currentchoosedBuilding = Instantiate(otherBuilding, GetComponent<Main>().ChoosedBuildingPlace.transform.position, GetComponent<Main>().ChoosedBuildingPlace.transform.rotation);
+                                    currentchoosedBuilding = Instantiate(otherBuilding, ChoosedBuildingPlace.transform.position, ChoosedBuildingPlace.transform.rotation);
                                     currentchoosedBuilding.name = otherBuilding.name;
                                     break;
                                 }
@@ -158,7 +166,7 @@ public class choosedObj : MonoBehaviour
                             {
                                 if (GetComponent<Main>().getchoosedBuilding() == JobBuilding.name)
                                 {
-                                    currentchoosedBuilding = Instantiate(JobBuilding, GetComponent<Main>().ChoosedBuildingPlace.transform.position, GetComponent<Main>().ChoosedBuildingPlace.transform.rotation);
+                                    currentchoosedBuilding = Instantiate(JobBuilding, ChoosedBuildingPlace.transform.position, ChoosedBuildingPlace.transform.rotation);
                                     currentchoosedBuilding.name = JobBuilding.name;
                                     currentchoosedBuilding.GetComponent<JobBuildings>().enabled = false;
                                     break;
@@ -169,13 +177,13 @@ public class choosedObj : MonoBehaviour
                             {
                                 if (GetComponent<Main>().getchoosedBuilding() == Building.name)
                                 {
-                                    currentchoosedBuilding = Instantiate(Building, GetComponent<Main>().ChoosedBuildingPlace.transform.position, GetComponent<Main>().ChoosedBuildingPlace.transform.rotation);
+                                    currentchoosedBuilding = Instantiate(Building, ChoosedBuildingPlace.transform.position, ChoosedBuildingPlace.transform.rotation);
                                     currentchoosedBuilding.name = Building.name;
                                     currentchoosedBuilding.GetComponent<BuildingsWithTransmitter>().enabled = false;
                                     break;
                                 }
                             }
-                            currentchoosedBuilding.transform.SetParent(GetComponent<Main>().ChoosedBuildingPlace.transform);
+                            currentchoosedBuilding.transform.SetParent(ChoosedBuildingPlace.transform);
                             BuildingInstancend = true;
                         }
                     }

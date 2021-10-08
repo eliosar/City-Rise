@@ -58,7 +58,7 @@ public class MainCamera : MonoBehaviour
             }
         }
 
-        if (mainCamera.GetComponent<Main>().getStoragesplaced() > 0)
+        if (mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getStoragesplaced() > 0)
         {
             GameObject Buildings = mainCamera.GetComponent<Main>().Buildingsplaced;
 
@@ -67,7 +67,7 @@ public class MainCamera : MonoBehaviour
                 Mats[i] = 0;
             }
 
-            for (int i = 0; i < mainCamera.GetComponent<Main>().getStoragesplaced(); i++)
+            for (int i = 0; i < mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getStoragesplaced(); i++)
             {
                 for (int x = 0; x < mainCamera.GetComponent<Main>().getMatsAmount(); x++)
                 {
