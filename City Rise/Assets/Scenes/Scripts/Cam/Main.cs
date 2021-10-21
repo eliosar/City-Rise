@@ -15,6 +15,7 @@ public class Main : MonoBehaviour
     public RawImage[] MatsButtons;
     public GameObject ChoosedBuildingPlace;
     public GameObject Buildingsplaced;
+    public GameObject Terrain;
     private string choosedBuilding;
     private StringandNumber Buildings;
     public StringandNumber Trades;

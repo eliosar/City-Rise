@@ -109,7 +109,7 @@ public class choosedObj : MonoBehaviour
                         }
                         else
                         {
-                            if (hittedObj.name != "Terrain (1)")
+                            if (hittedObj.name != GetComponent<Main>().Terrain.name)
                             {
                                 if (IsBuildingsCanvasOn)
                                 {
@@ -132,7 +132,7 @@ public class choosedObj : MonoBehaviour
 
                     if (GetComponent<Main>().getchoosedBuilding() != null)
                     {
-                        if (hittedObj.name == "Terrain (1)")
+                        if (hittedObj.name == GetComponent<Main>().Terrain.name)
                         {
                             ChoosedBuildingPlace.transform.position = posHit;
                             ChoosedBuildingPlace.transform.rotation = new Quaternion(0, transform.rotation.y, transform.rotation.z, 0);

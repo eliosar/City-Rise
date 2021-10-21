@@ -8,7 +8,6 @@ public class JobBuildings : MonoBehaviour
     private int currentPeopleInBuilding = 0;
     public string[] MatsName;
     public bool transmitter = false;
-    public string originPlaceName;
     public ArrayLayout data;
     private int[,] ProbabilityAmounts;
     private int[,] MatsProbability;

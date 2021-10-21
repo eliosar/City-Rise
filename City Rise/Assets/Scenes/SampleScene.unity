@@ -856,7 +856,7 @@ MonoBehaviour:
   JobBuildings:
   - {fileID: 3421508163202813881, guid: 189523199ab25f94ca8be6bf05e7ffd9, type: 3}
   - {fileID: 1912160044096203380, guid: 4b71b62f3cf27aa488a7d3708795769a, type: 3}
-  - {fileID: 1155708411498331346, guid: b4033d016d971174db422aa7a7528d17, type: 3}
+  - {fileID: 6508506799281918552, guid: b4033d016d971174db422aa7a7528d17, type: 3}
   - {fileID: 329076079778204240, guid: a69c6a1006162934c84e1451a6448e15, type: 3}
   - {fileID: 4884281822616134508, guid: 2011ef26f3ecc1944956f5ed73a01fbb, type: 3}
   BuildingsWithTransmitter:
@@ -887,6 +887,7 @@ MonoBehaviour:
   - {fileID: 3056622384779361847, guid: c7337cea93403854bb7ab7d40cb197a9, type: 3}
   ChoosedBuildingPlace: {fileID: 594207196}
   Buildingsplaced: {fileID: 614259767}
+  Terrain: {fileID: 1252630185}
   Trades:
     Arrays:
     - Name: Wood
