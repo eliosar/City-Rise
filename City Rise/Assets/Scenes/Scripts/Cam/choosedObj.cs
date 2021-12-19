@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class choosedObj : MonoBehaviour
 {
     private Vector3 posHit;
-    private int range = 300;
+    public int range = 300;
     private RaycastHit hit;
     private GameObject hittedObj;
     private Collider hittedCol;
@@ -44,6 +44,22 @@ public class choosedObj : MonoBehaviour
 
                 if (InGame)
                 {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        InGame = false;
+                        GameObject Menu = null;
+
+                        foreach (GameObject Canvas in GetComponent<Main>().Canvas)
+                        {
+                            if (Canvas.name == "Menu")
+                            {
+                                Menu = Canvas;
+                                break;
+                            }
+                        }
+                        Instantiate(Menu, GetComponent<Main>().getMainCameraCanvas().transform);
+                    }
+
                     if (Input.GetButtonDown("Fire1"))
                     {
                         if (BuildingInstancend)
@@ -183,6 +199,7 @@ public class choosedObj : MonoBehaviour
                                     break;
                                 }
                             }
+                            currentchoosedBuilding.transform.localScale = new Vector3(2, 2, 2);
                             currentchoosedBuilding.transform.SetParent(ChoosedBuildingPlace.transform);
                             BuildingInstancend = true;
                         }
@@ -198,8 +215,7 @@ public class choosedObj : MonoBehaviour
         {
             if (hittedObj.name == JobBuilding.name)
             {
-                BuildingsCanvas = Instantiate(GetComponent<Main>().getJobBuildingsCanvas());
-                BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                BuildingsCanvas = Instantiate(GetComponent<Main>().getJobBuildingsCanvas(), hittedObj.transform);
                 BuildingsCanvas.name = GetComponent<Main>().getJobBuildingsCanvas().name;
                 break;
             }
@@ -209,8 +225,7 @@ public class choosedObj : MonoBehaviour
         {
             if (hittedObj.name == Building.name)
             {
-                BuildingsCanvas = Instantiate(GetComponent<Main>().getBuildingsWithTransmitterCanvas());
-                BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                BuildingsCanvas = Instantiate(GetComponent<Main>().getBuildingsWithTransmitterCanvas(), hittedObj.transform);
                 BuildingsCanvas.name = GetComponent<Main>().getBuildingsWithTransmitterCanvas().name;
                 break;
             }
@@ -220,8 +235,7 @@ public class choosedObj : MonoBehaviour
         {
             if (hittedObj.name == otherBuilding.name)
             {
-                BuildingsCanvas = Instantiate(GetComponent<Main>().getotherBuildingsCanvas(hittedObj.name + " Canvas"));
-                BuildingsCanvas.transform.SetParent(hittedObj.transform);
+                BuildingsCanvas = Instantiate(GetComponent<Main>().getotherBuildingsCanvas(hittedObj.name + " Canvas"), hittedObj.transform);
                 BuildingsCanvas.name = hittedObj.name + " Canvas";
 
                 foreach (GameObject Building in GetComponent<Main>().BuildingsWithBigCanvasWithoutButton)

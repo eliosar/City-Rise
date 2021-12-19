@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Main : MonoBehaviour
 {
     public string[] MatsNames;
+    public RawImage[] MatsButtons;
+    public Text[] MatsTexts;
     public GameObject[] BuildingsWithBigCanvasWithoutButton;
     public GameObject[] Canvas;
     public GameObject[] JobBuildings;
     public GameObject[] BuildingsWithTransmitter;
     public GameObject[] otherBuildings;
     public RawImage[] BuildingsButtons;
-    public RawImage[] MatsButtons;
     public GameObject ChoosedBuildingPlace;
     public GameObject Buildingsplaced;
     public GameObject Terrain;
@@ -29,6 +30,7 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
+        Terrain.GetComponent<MeshRenderer>().material.color = Color.black;
         otherBuildingsCanvas = new GameObject[otherBuildings.Length];
         allBuildings = new GameObject[JobBuildings.Length + BuildingsWithTransmitter.Length + otherBuildings.Length];
 
@@ -111,6 +113,11 @@ public class Main : MonoBehaviour
         }
 
         return Canvas;
+    }
+
+    public Text[] getMatsTexts()
+    {
+        return MatsTexts;
     }
 
     public int RandomNumber(int maxAmount)
@@ -202,5 +209,19 @@ public class Main : MonoBehaviour
     public StringandNumber.rowData[] getTrades()
     {
         return Trades.Arrays;
+    }
+
+    public void Exitnormal(GameObject destroyingObj)
+    {
+        Destroy(destroyingObj);
+
+        GetComponent<choosedObj>().setinGame(true);
+    }
+
+    public void ExitBuildingsCanvas(GameObject destroyingObj)
+    {
+        Destroy(destroyingObj);
+
+        GetComponent<choosedObj>().setIsBuildingsCanvasOn(false);
     }
 }

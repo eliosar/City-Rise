@@ -21,25 +21,28 @@ public class MainCamera : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject Child = transform.GetChild(i).gameObject;
-            
-            if(Child.name == "Buttons")
+
+            if (Child.name == "Buttons")
             {
                 ButtonsFolder = Child;
                 for (int x = 0; x < Child.transform.childCount; x++)
                 {
-                    GameObject ButtonChild = Child.transform.GetChild(x).gameObject;
-                    if (ButtonChild.name == "costing Buildings")
+                    GameObject Button = Child.transform.GetChild(x).gameObject;
+                    if (Button.name == "costing Buildings")
                     {
-                        costingBuildingsButton = ButtonChild;
+                        costingBuildingsButton = Button;
                     }
 
-                    if(ButtonChild.name == "free Buildings")
+                    if (Button.name == "free Buildings")
                     {
-                        freeBuildingsButton = ButtonChild;
+                        freeBuildingsButton = Button;
                     }
                 }
             }
         }
+
+        costingBuildingsButton.GetComponent<Button>().onClick.AddListener(costingBuildings);
+        freeBuildingsButton.GetComponent<Button>().onClick.AddListener(freeBuildings);
     }
 
     private void Update()
@@ -98,7 +101,6 @@ public class MainCamera : MonoBehaviour
             {
                 Destroy(ButtonsFolder.transform.GetChild(i).GetChild(0));
             }
-
             if(Child.name + " Canvas" == whichCanvas.name)
             {
                 whichButton = Child;

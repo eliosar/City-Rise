@@ -73,13 +73,11 @@ public class Scrollboard : MonoBehaviour
 
     public void Exit()
     {
-        Destroy(gameObject);
-
-        MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setinGame(true);
-        
         if (gameObject.name == "free Buildings Canvas")
         {
             GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setisfreeBuilding(true);
         }
+
+        MainCameraCanvas.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().Exitnormal(gameObject);
     }
 }

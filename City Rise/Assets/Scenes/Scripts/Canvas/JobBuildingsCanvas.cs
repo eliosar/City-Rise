@@ -23,9 +23,7 @@ public class JobBuildingsCanvas : MonoBehaviour
 
     public void Exit()
     {
-        Destroy(gameObject);
-
-        GetComponentInParent<getMainCamera>().mainCamera.GetComponent<choosedObj>().setIsBuildingsCanvasOn(false);
+        GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().ExitBuildingsCanvas(gameObject);
     }
 
     public void collectAll()

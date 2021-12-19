@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class MainCameraCanvasMats : MonoBehaviour
 {
     private int[] Mats;
+    private Text[] MatsTexts;
 
     private void Start()
     {
         Mats = new int[GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsAmount()];
+        MatsTexts = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsTexts();
     }
 
     private void Update()
@@ -18,7 +20,7 @@ public class MainCameraCanvasMats : MonoBehaviour
         foreach (int mAmount in Mats)
         {
             Mats[y] = GetComponentInParent<MainCamera>().getMats(y);
-            transform.GetChild(y).GetComponent<Text>().text = Mats[y] + " " + GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsNames[y];
+            MatsTexts[y].GetComponent<Text>().text = Mats[y] + " " + GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsNames[y];
 
             y += 1;
         }
