@@ -41,9 +41,9 @@ public class JobBuildingsCanvas : MonoBehaviour
         int different = 0;
         GameObject MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();
 
-        foreach (string Name in MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsNames)
+        foreach (Text Mat in MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsTexts)
         {
-            if (Name == GetComponentInParent<JobBuildings>().MatsName[0])
+            if (Mat.name == GetComponentInParent<JobBuildings>().MatsName[0])
             {
                 different = i;
                 break;

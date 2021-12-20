@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 363118339}
   - component: {fileID: 363118338}
   m_Layer: 5
-  m_Name: stone
+  m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   - {fileID: 2802193567562703467, guid: e5a41d802689e5747b2035672ad4e4f3, type: 3}
   - {fileID: 1665856337}
   - {fileID: 4047221970479610629, guid: ed29442e34aee714f82d79b216b70c17, type: 3}
-  - {fileID: 797735387613376083, guid: 9f0eba22ca974f448aa42c433b0c1258, type: 3}
+  - {fileID: 6182479399043048175, guid: fbde99cd0540a4446a9e669df79b2454, type: 3}
   JobBuildings:
   - {fileID: 2833393843123129535, guid: b4033d016d971174db422aa7a7528d17, type: 3}
   - {fileID: 2305985030166207822, guid: a69c6a1006162934c84e1451a6448e15, type: 3}
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 1044546317}
   - component: {fileID: 1044546316}
   m_Layer: 5
-  m_Name: rubins
+  m_Name: Rubin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 1262853181}
   - component: {fileID: 1262853180}
   m_Layer: 5
-  m_Name: wheat
+  m_Name: Wheat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 1361549063}
   - component: {fileID: 1361549062}
   m_Layer: 5
-  m_Name: wood
+  m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1490,7 +1490,7 @@ GameObject:
   - component: {fileID: 1706505644}
   - component: {fileID: 1706505643}
   m_Layer: 5
-  m_Name: fisch
+  m_Name: Fisch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1671,7 +1671,7 @@ GameObject:
   - component: {fileID: 1759195625}
   - component: {fileID: 1759195624}
   m_Layer: 5
-  m_Name: iron
+  m_Name: Iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1750,7 +1750,7 @@ GameObject:
   - component: {fileID: 1922643731}
   - component: {fileID: 1922643730}
   m_Layer: 5
-  m_Name: diamond
+  m_Name: Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1829,7 +1829,7 @@ GameObject:
   - component: {fileID: 2038812193}
   - component: {fileID: 2038812192}
   m_Layer: 5
-  m_Name: meat
+  m_Name: Meat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1908,7 +1908,7 @@ GameObject:
   - component: {fileID: 2078077887}
   - component: {fileID: 2078077886}
   m_Layer: 5
-  m_Name: gold
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

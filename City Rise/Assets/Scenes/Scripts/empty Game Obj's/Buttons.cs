@@ -14,5 +14,12 @@ public class Buttons : MonoBehaviour
                 transform.GetChild(i).GetComponent<Button>().interactable = true;
             }
         }
+        else
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).GetComponent<Button>().interactable = false;
+            }
+        }
     }
 }

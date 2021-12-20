@@ -20,7 +20,7 @@ public class MainCameraCanvasMats : MonoBehaviour
         foreach (int mAmount in Mats)
         {
             Mats[y] = GetComponentInParent<MainCamera>().getMats(y);
-            MatsTexts[y].GetComponent<Text>().text = Mats[y] + " " + GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsNames[y];
+            MatsTexts[y].GetComponent<Text>().text = Mats[y] + " " + GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsTexts[y].name;
 
             y += 1;
         }

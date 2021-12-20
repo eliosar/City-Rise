@@ -10,7 +10,6 @@ public class MainCamera : MonoBehaviour
     private GameObject ButtonsFolder;
     private GameObject costingBuildingsButton;
     private GameObject freeBuildingsButton;
-    private GameObject Canvas;
 
     private void Start()
     {
@@ -117,7 +116,7 @@ public class MainCamera : MonoBehaviour
         mainCamera.GetComponent<Main>().setchoosedBuilding(null);
         mainCamera.GetComponent<choosedObj>().setisfreeBuilding(false);
 
-        Canvas = Instantiate(whichCanvas);
+        GameObject Canvas = Instantiate(whichCanvas);
         Canvas.transform.position = transform.position;
         Canvas.transform.SetParent(whichButton.transform);
         Canvas.name = whichCanvas.name;

@@ -57,7 +57,10 @@ public class choosedObj : MonoBehaviour
                                 break;
                             }
                         }
-                        Instantiate(Menu, GetComponent<Main>().getMainCameraCanvas().transform);
+
+                        GameObject Menuobj = Instantiate(Menu, GetComponent<Main>().getMainCameraCanvas().transform);
+                        Menuobj.name = Menu.name;
+                        Menuobj.transform.localPosition = new Vector2(0, 0);
                     }
 
                     if (Input.GetButtonDown("Fire1"))
@@ -244,13 +247,6 @@ public class choosedObj : MonoBehaviour
                     {
                         InGame = false;
                         IsBuildingsCanvasOn = false;
-
-                        for (int i = 0; i < GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getButtonsFolder().transform.childCount; i++)
-                        {
-                            GameObject Child = GetComponent<Main>().getMainCameraCanvas().GetComponent<MainCamera>().getButtonsFolder().transform.GetChild(i).gameObject;
-
-                            Child.GetComponent<Button>().interactable = false;
-                        }
                         break;
                     }
                 }

@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
-    public string[] MatsNames;
-    public RawImage[] MatsButtons;
     public Text[] MatsTexts;
+    public RawImage[] MatsButtons;
     public GameObject[] BuildingsWithBigCanvasWithoutButton;
     public GameObject[] Canvas;
     public GameObject[] JobBuildings;
@@ -136,9 +135,9 @@ public class Main : MonoBehaviour
     {
         int Place = 0;
 
-        foreach (string MatName in MatsNames)
+        foreach (Text Mat in MatsTexts)
         {
-            if(MatName == which)
+            if(Mat.name == which)
             {
                 break;
             }
@@ -203,7 +202,7 @@ public class Main : MonoBehaviour
 
     public int getMatsAmount()
     {
-        return MatsNames.Length;
+        return MatsTexts.Length;
     }
 
     public StringandNumber.rowData[] getTrades()

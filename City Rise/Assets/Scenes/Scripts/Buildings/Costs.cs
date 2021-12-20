@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class Costs : MonoBehaviour
 {
-    public int Rubins;
+    public int Rubin;
     private GameObject MainCameraCanvas;
     private GameObject MainCamera;
-    private GameObject Buildingsplaced;
-    private int[] storedRubinsAmount;
-    private int RubinPlace;
 
     private void Start()
     {
@@ -22,6 +19,5 @@ public class Costs : MonoBehaviour
         }
 
         MainCamera = MainCameraCanvas.GetComponent<getMainCamera>().mainCamera;
-        Buildingsplaced = MainCamera.GetComponent<Main>().Buildingsplaced;
     }
 }
