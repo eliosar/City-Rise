@@ -15,7 +15,7 @@ public class BuildingsWithTransmitterCanvas : MonoBehaviour
     }
     void Update()
     {
-        transform.GetChild(0).GetComponent<Text>().text = transform.parent.name + "\n\n" + GetComponentInParent<BuildingsWithTransmitter>().getcurrentPeopleInBuilding() + " / " + GetComponentInParent<BuildingsWithTransmitter>().maxPeopleInBuilding + " Peoples in Building\n";
+        transform.GetChild(0).GetComponent<Text>().text = transform.parent.name + "\n\n" + GetComponentInParent<BuildingsWithTransmitter>().getcurrentPeopleInBuilding() + " / " + GetComponentInParent<BuildingsWithTransmitter>().maxPeopleInBuilding + " People in Building\n";
 
         for (int i = 0; i < GetComponentInParent<BuildingsWithTransmitter>().getMatsAmount(); i++)
         {
@@ -33,31 +33,61 @@ public class BuildingsWithTransmitterCanvas : MonoBehaviour
 
     private void ProductHandOver(string Name1)
     {
-        int y = 0;
+        GameObject[] Transmitter = GetComponentInParent<Buildings>().getTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter);
+        Debug.Log("choosed Transmitter name: " + GetComponentInParent<BuildingsWithTransmitter>().Transmitter.name);
+        Debug.Log("all choosed Transmitter: " + GetComponentInParent<Buildings>().getTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter));
+        Debug.Log("first choosed Transmitter: " + GetComponentInParent<Buildings>().getTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter, 0));
+        Debug.Log("own Transmitter: " + Transmitter);
         int i = 0;
+        int y = 0;
         int different = 0;
-        int ymindiff = 0;
-        int currentProductAmount = 0;
+        GameObject MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();
+        int currentMatplace = Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace(Name1);
 
-        foreach (string Name in GetComponentInParent<BuildingsWithTransmitter>().Transmitter.GetComponent<JobBuildings>().MatsName)
+        foreach (Text Mat in MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsTexts)
         {
-            if (Name == Name1)
+            if (Mat.name == Name1)
             {
                 y = i;
             }
 
-            if (Name == GetComponentInParent<BuildingsWithTransmitter>().MatsName[0])
+            if (Mat.name == GetComponentInParent<BuildingsWithTransmitter>().MatsName[0])
             {
                 different = i;
             }
 
+            
             i += 1;
         }
 
-        ymindiff = y - different;
-        currentProductAmount = GetComponentInParent<BuildingsWithTransmitter>().getMat(ymindiff);
-        Buildingsplaced.GetComponent<Buildings>().getrandomTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter).GetComponent<JobBuildings>().addtransmittetMats(y, currentProductAmount);
-        GetComponentInParent<BuildingsWithTransmitter>().takeawayMatsamount(ymindiff, currentProductAmount);
+        int ymindiff = y - different;
+
+        foreach (GameObject currentTransmitter in Transmitter)
+        {
+            if (currentTransmitter != null)
+            {
+                int currentProductAmount = GetComponentInParent<BuildingsWithTransmitter>().getMat(ymindiff);
+                Debug.Log("Mat amount: " + GetComponentInParent<BuildingsWithTransmitter>().getMat(ymindiff));
+                int diff = currentTransmitter.GetComponent<storedMats>().getMaxMats() - currentTransmitter.GetComponent<storedMats>().getMats(currentMatplace);
+
+                if (diff > 0)
+                {
+                    int Amount = 0;
+                    if (diff > currentProductAmount)
+                    {
+                        Amount = currentProductAmount;
+                    }
+                    else
+                    {
+                        Amount = diff;
+                    }
+
+                    Buildingsplaced.GetComponent<Buildings>().getrandomTransmitter(GetComponentInParent<BuildingsWithTransmitter>().Transmitter).GetComponent<JobBuildings>().addtransmittetMats(y, Amount);
+                    Debug.Log("Take: " + Amount);
+                    GetComponentInParent<BuildingsWithTransmitter>().takeawayMatsamount(ymindiff, Amount);
+                }
+            }
+        }
     }
 
     public void Exit()

@@ -44,6 +44,15 @@ public class choosedObj : MonoBehaviour
 
                 if (InGame)
                 {
+                    if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        if (currentchoosedBuilding != null)
+                        {
+                            Vector3 rotation = currentchoosedBuilding.transform.eulerAngles;
+                            currentchoosedBuilding.transform.eulerAngles = new Vector3(rotation.x, rotation.y + 90, rotation.z);
+                        }
+                    }
+
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         InGame = false;
@@ -175,7 +184,7 @@ public class choosedObj : MonoBehaviour
                             {
                                 if (GetComponent<Main>().getchoosedBuilding() == otherBuilding.name)
                                 {
-                                    currentchoosedBuilding = Instantiate(otherBuilding, ChoosedBuildingPlace.transform.position, ChoosedBuildingPlace.transform.rotation);
+                                    currentchoosedBuilding = Instantiate(otherBuilding, ChoosedBuildingPlace.transform.position, otherBuilding.transform.rotation);
                                     currentchoosedBuilding.name = otherBuilding.name;
                                     break;
                                 }
@@ -185,7 +194,7 @@ public class choosedObj : MonoBehaviour
                             {
                                 if (GetComponent<Main>().getchoosedBuilding() == JobBuilding.name)
                                 {
-                                    currentchoosedBuilding = Instantiate(JobBuilding, ChoosedBuildingPlace.transform.position, ChoosedBuildingPlace.transform.rotation);
+                                    currentchoosedBuilding = Instantiate(JobBuilding, ChoosedBuildingPlace.transform.position, JobBuilding.transform.rotation);
                                     currentchoosedBuilding.name = JobBuilding.name;
                                     currentchoosedBuilding.GetComponent<JobBuildings>().enabled = false;
                                     break;
@@ -196,7 +205,7 @@ public class choosedObj : MonoBehaviour
                             {
                                 if (GetComponent<Main>().getchoosedBuilding() == Building.name)
                                 {
-                                    currentchoosedBuilding = Instantiate(Building, ChoosedBuildingPlace.transform.position, ChoosedBuildingPlace.transform.rotation);
+                                    currentchoosedBuilding = Instantiate(Building, ChoosedBuildingPlace.transform.position, Building.transform.rotation);
                                     currentchoosedBuilding.name = Building.name;
                                     currentchoosedBuilding.GetComponent<BuildingsWithTransmitter>().enabled = false;
                                     break;

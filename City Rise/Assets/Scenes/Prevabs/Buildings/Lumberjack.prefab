@@ -157,7 +157,7 @@ MonoBehaviour:
     Mats:
     - ProbabilityA: 0400000006000000
       MatsP: 460000001e000000
-  maxSec: 15
+  maxSec: 1
   maxTransSec: 10
 --- !u!114 &3295854657739823780
 MonoBehaviour:

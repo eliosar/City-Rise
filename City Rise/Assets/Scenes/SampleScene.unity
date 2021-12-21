@@ -723,25 +723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e2bbf436300941b1242bed0c63728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MatsNames:
-  - Wood
-  - Wheat
-  - Fisch
-  - Meat
-  - Stone
-  - Iron
-  - Gold
-  - Diamonds
-  - Rubins
-  MatsButtons:
-  - {fileID: 3056622384779361847, guid: 2c7d0ad9abc1cad40a17da2f6f82b4c4, type: 3}
-  - {fileID: 3056622384779361847, guid: 216e595461654094eab0318e88aef899, type: 3}
-  - {fileID: 3056622384779361847, guid: 1781a809a4ec3fa43ad8314c548cf79c, type: 3}
-  - {fileID: 3056622384779361847, guid: ce5eab9868adf5145952c391f77bc249, type: 3}
-  - {fileID: 3056622384779361847, guid: 0d66f3cfeb633a642805c836d41a0c9e, type: 3}
-  - {fileID: 3056622384779361847, guid: 64737da793e54cd438da77a8fe233765, type: 3}
-  - {fileID: 3056622384779361847, guid: 734f6c7ac922ebd45a2333f090a8cdd0, type: 3}
-  - {fileID: 3056622384779361847, guid: c7337cea93403854bb7ab7d40cb197a9, type: 3}
   MatsTexts:
   - {fileID: 1361549062}
   - {fileID: 1262853180}
@@ -752,6 +733,15 @@ MonoBehaviour:
   - {fileID: 2078077886}
   - {fileID: 1922643730}
   - {fileID: 1044546316}
+  MatsButtons:
+  - {fileID: 3056622384779361847, guid: 2c7d0ad9abc1cad40a17da2f6f82b4c4, type: 3}
+  - {fileID: 3056622384779361847, guid: 216e595461654094eab0318e88aef899, type: 3}
+  - {fileID: 3056622384779361847, guid: 1781a809a4ec3fa43ad8314c548cf79c, type: 3}
+  - {fileID: 3056622384779361847, guid: ce5eab9868adf5145952c391f77bc249, type: 3}
+  - {fileID: 3056622384779361847, guid: 0d66f3cfeb633a642805c836d41a0c9e, type: 3}
+  - {fileID: 3056622384779361847, guid: 64737da793e54cd438da77a8fe233765, type: 3}
+  - {fileID: 3056622384779361847, guid: 734f6c7ac922ebd45a2333f090a8cdd0, type: 3}
+  - {fileID: 3056622384779361847, guid: c7337cea93403854bb7ab7d40cb197a9, type: 3}
   BuildingsWithBigCanvasWithoutButton:
   - {fileID: 4687927823582700469, guid: 4907fba722dd7c545aedb96b6c2fba33, type: 3}
   Canvas:
@@ -795,6 +785,15 @@ MonoBehaviour:
     - Name: Wood
       Costs: 35
       Amount: 2
+    - Name: Wheat
+      Costs: 30
+      Amount: 2
+    - Name: Diamond
+      Costs: 30
+      Amount: 4
+    - Name: Meat
+      Costs: 20
+      Amount: 3
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0

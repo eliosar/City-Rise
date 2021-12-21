@@ -124,6 +124,10 @@ public class Buildings : MonoBehaviour
     {
         return Storage[which];
     }
+    public GameObject[] getStorages()
+    {
+        return Storage;
+    }
 
     public GameObject getrandomStorage()
     {
@@ -148,6 +152,25 @@ public class Buildings : MonoBehaviour
         }
 
         return Transmitt[which];
+    }
+    public GameObject[] getTransmitter(GameObject Transmitter)
+    {
+        GameObject[] Transmitt;
+
+        Transmitt = new GameObject[TransmitterPlaced];
+
+        for (int x = 0; x < TransmitterPlaced; x++)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                if (transform.GetChild(i).gameObject.name == Transmitter.name)
+                {
+                    Transmitt[x] = transform.GetChild(i).gameObject;
+                    Debug.Log(x);
+                }
+            }
+        }
+        return Transmitt;
     }
 
     public GameObject getrandomTransmitter(GameObject Transmitter)

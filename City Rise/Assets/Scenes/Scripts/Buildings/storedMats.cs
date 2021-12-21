@@ -39,9 +39,12 @@ public class storedMats : MonoBehaviour
     {
         Mats[which] += add;
     }
-
     public void takeMats(int which, int take)
     {
         Mats[which] -= take;
+    }
+    public int getMaxMats()
+    {
+        return maxMats;
     }
 }
