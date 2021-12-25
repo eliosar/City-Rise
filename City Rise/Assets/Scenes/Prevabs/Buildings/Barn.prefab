@@ -551,7 +551,7 @@ MonoBehaviour:
   maxPeopleInBuilding: 2
   MatsName:
   - Meat
-  Transmitter: {fileID: 2833393843123129535, guid: b4033d016d971174db422aa7a7528d17, type: 3}
+  Transmitter: {fileID: 7329986841545338114, guid: ed2d6223a1e234844a2e0a28ba2469ad, type: 3}
   data:
     Mats:
     - ProbabilityA: 0100000002000000

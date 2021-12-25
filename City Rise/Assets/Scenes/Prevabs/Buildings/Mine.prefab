@@ -637,7 +637,7 @@ MonoBehaviour:
   - Iron
   - Gold
   - Diamonds
-  Transmitter: {fileID: 9150402430561213894, guid: 2011ef26f3ecc1944956f5ed73a01fbb, type: 3}
+  Transmitter: {fileID: 2006463902798351185, guid: 0061fff84d1032f418ce06a219b3b55e, type: 3}
   data:
     Mats:
     - ProbabilityA: 070000000800000009000000
