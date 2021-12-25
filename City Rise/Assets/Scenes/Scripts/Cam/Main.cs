@@ -223,4 +223,11 @@ public class Main : MonoBehaviour
 
         GetComponent<choosedObj>().setIsBuildingsCanvasOn(false);
     }
+
+    public void MoveBuilding(GameObject Building)
+    {
+        Building.transform.SetParent(ChoosedBuildingPlace.transform);
+        choosedBuilding = Building.name;
+        GetComponent<choosedObj>().setBuildingInstanced(true);
+    }
 }

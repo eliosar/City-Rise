@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class choosedBuildingPlace : MonoBehaviour
 {
-    public bool Terrainhitted;
+    private bool Terrainhitted;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -20,4 +20,10 @@ public class StorageCanvas : MonoBehaviour
     {
         GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().ExitBuildingsCanvas(gameObject);
     }
+
+    public void Move()
+    {
+        GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MoveBuilding(gameObject.transform.parent.gameObject);
+        Exit();
+    }
 }

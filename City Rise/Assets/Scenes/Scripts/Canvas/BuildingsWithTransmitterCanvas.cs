@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class BuildingsWithTransmitterCanvas : MonoBehaviour
 {
-    private GameObject MainCameraCanvas;
     private GameObject Buildingsplaced;
 
     private void Start()
     {
         Buildingsplaced = transform.parent.parent.gameObject;
-        MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();
     }
     void Update()
     {
@@ -93,5 +91,11 @@ public class BuildingsWithTransmitterCanvas : MonoBehaviour
     public void Exit()
     {
         GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().ExitBuildingsCanvas(gameObject);
+    }
+
+    public void Move()
+    {
+        Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().MoveBuilding(gameObject.transform.parent.gameObject);
+        Exit();
     }
 }

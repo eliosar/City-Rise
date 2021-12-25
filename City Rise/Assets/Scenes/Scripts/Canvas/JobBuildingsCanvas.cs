@@ -78,4 +78,10 @@ public class JobBuildingsCanvas : MonoBehaviour
             }
         }
     }
+
+    public void Move()
+    {
+        Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().MoveBuilding(gameObject.transform.parent.gameObject);
+        Exit();
+    }
 }

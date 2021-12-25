@@ -78,7 +78,7 @@ public class choosedObj : MonoBehaviour
                         {
                             if (NotInObj)
                             {
-                                ChoosedBuildingPlace.transform.GetChild(0).GetComponent<BuildingsScript>().setIsPlaced(true);
+                                currentchoosedBuilding.GetComponent<BuildingsScript>().setIsPlaced(true);
 
                                 foreach (GameObject JobBuilding in GetComponent<Main>().JobBuildings)
                                 {
