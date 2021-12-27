@@ -11,6 +11,7 @@ public class JobBuildingsCanvas : MonoBehaviour
     {
         Buildingsplaced = transform.parent.parent.gameObject;
     }
+
     void Update()
     {
         transform.GetChild(0).GetComponent<Text>().text = transform.parent.name + "\n\n" + GetComponentInParent<JobBuildings>().getcurrentPeopleInBuilding() + " / " + GetComponentInParent<JobBuildings>().maxPeopleInBuilding + " People in Building\n";
@@ -34,10 +35,10 @@ public class JobBuildingsCanvas : MonoBehaviour
         }
     }
 
-    private void ProductHandOver(string Name1)
+    private void ProductHandOver(string Name)
     {
         GameObject[] Storages = GetComponentInParent<Buildings>().getStorages();
-        int currentMatplace = Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace(Name1);
+        int currentMatplace = Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace(Name);
         int i = 0;
         int different = 0;
         GameObject MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();

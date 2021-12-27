@@ -15,7 +15,7 @@ public class MainCamera : MonoBehaviour
     {
         mainCamera = GetComponent<getMainCamera>().mainCamera;
         
-        Mats = new int[mainCamera.GetComponent<Main>().getMatsAmount()];
+        Mats = new int[mainCamera.GetComponent<Main>().MatsTexts.Length];
 
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -47,33 +47,21 @@ public class MainCamera : MonoBehaviour
     private void Update()
     {
         mainCamera = GetComponent<getMainCamera>().mainCamera;
-        int currentBuildings = mainCamera.GetComponent<Main>().Buildingsplaced.transform.childCount;
-        int currentStoragesplaced = 0;
+        GameObject Buildingsplaced = mainCamera.GetComponent<Main>().Buildingsplaced;
 
-        for (int i = 0; i < currentBuildings; i++)
+        if (Buildingsplaced.GetComponent<Buildings>().getStorages().Length > 0)
         {
-            string Buildings = mainCamera.GetComponent<Main>().Buildingsplaced.transform.GetChild(i).name;
-
-            if(Buildings == "Storage")
-            {
-                currentStoragesplaced += 1;
-            }
-        }
-
-        if (mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getStoragesplaced() > 0)
-        {
-            GameObject Buildings = mainCamera.GetComponent<Main>().Buildingsplaced;
-
-            for (int i = 0; i < mainCamera.GetComponent<Main>().getMatsAmount(); i++)
+            for (int i = 0; i < mainCamera.GetComponent<Main>().MatsTexts.Length; i++)
             {
                 Mats[i] = 0;
             }
 
-            for (int i = 0; i < mainCamera.GetComponent<Main>().Buildingsplaced.GetComponent<Buildings>().getStoragesplaced(); i++)
+            for (int i = 0; i < Buildingsplaced.GetComponent<Buildings>().getStoragesplaced(); i++)
             {
-                for (int x = 0; x < mainCamera.GetComponent<Main>().getMatsAmount(); x++)
+                for (int x = 0; x < mainCamera.GetComponent<Main>().MatsTexts.Length; x++)
                 {
-                    Mats[x] += Buildings.GetComponent<Buildings>().getStorage(i).GetComponent<storedMats>().getMats(x);
+                    Mats[x] += Buildingsplaced.GetComponent<Buildings>().getStorage(i).GetComponent<storedMats>().getMats(x);
+                    //Debug.Log(Mats[x]);
                 }
             }
         }

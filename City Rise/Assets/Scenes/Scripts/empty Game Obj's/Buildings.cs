@@ -6,7 +6,7 @@ public class Buildings : MonoBehaviour
 {
     private GameObject[] Storage = new GameObject[4];
     private int TransmitterPlaced;
-    private int Storagesplaced;
+    private int Storagesplaced = 0;
     private int totalPeopleforBuildings = 0;
     private int allmaxPeopleInBuildings = 0;
     private GameObject MainCamera;
@@ -204,13 +204,13 @@ public class Buildings : MonoBehaviour
         allmaxPeopleInBuildings += add;
     }
 
-    public void addStoragesplaced(int add)
-    {
-        Storagesplaced += add;
-    }
-
     public int getStoragesplaced()
     {
         return Storagesplaced;
+    }
+
+    public void addStorageplaced()
+    {
+        Storagesplaced += 1;
     }
 }

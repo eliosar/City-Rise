@@ -11,11 +11,16 @@ public class Menu : MonoBehaviour
 
     public void Close()
     {
-        Debug.Log("Closed");
+        SceneLoader.Save(GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().Buildingsplaced);
+
         Exit();
 
-
-
         Application.Quit();
+    }
+
+    public void Delete()
+    {
+        SceneLoader.Delete();
+        Exit();
     }
 }

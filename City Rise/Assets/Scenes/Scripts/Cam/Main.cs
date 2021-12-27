@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class Main : MonoBehaviour
 {
@@ -96,6 +97,62 @@ public class Main : MonoBehaviour
                 }
             }
         }
+
+        string path = Application.persistentDataPath + "/Data.save";
+        if (File.Exists(path))
+        {
+            Data data = SceneLoader.Load();
+            Buildings.Arrays = data.getallfreeBuildings();
+            transform.position = new Vector3(data.getCamPos()[0], data.getCamPos()[1], data.getCamPos()[2]);
+
+            for (int i = 0; i < data.getallBuildingsRotation().Length; i++)
+            {
+                if (data.getallBuildingsName()[i] != null)
+                {
+                    GameObject currentBuilding = Instantiate(getBuilding(data.getallBuildingsName()[i]), Buildingsplaced.transform);
+                    currentBuilding.name = data.getallBuildingsName()[i];
+                    currentBuilding.transform.position = new Vector3(data.getallBuildingsPos()[i, 0], data.getallBuildingsPos()[i, 1], data.getallBuildingsPos()[i, 2]);
+                    currentBuilding.transform.eulerAngles = new Vector3(data.getallBuildingsRotation()[i], 0, 0);
+                    currentBuilding.transform.localScale = new Vector3(2, 2, 2);
+
+                    if (currentBuilding.name == "Storage")
+                    {
+                        currentBuilding.GetComponent<storedMats>().createMats();
+
+                        for (int x = 0; x < MatsTexts.Length; x++)
+                        {
+                            currentBuilding.GetComponent<storedMats>().setMats(x, data.getallstoredMats()[i, x]);
+                        }
+
+                        for (int x = 0; x < Buildingsplaced.GetComponent<Buildings>().getStorages().Length; x++)
+                        {
+                            if (Buildingsplaced.GetComponent<Buildings>().getStorage(x) == null)
+                            {
+                                Buildingsplaced.GetComponent<Buildings>().setStorageplaced(x, currentBuilding);
+                                Buildingsplaced.GetComponent<Buildings>().addStorageplaced();
+                                break;
+                            }
+                        }
+                    }
+
+                    foreach (GameObject Building in Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().JobBuildings)
+                    {
+                        if (Building.name == currentBuilding.name)
+                        {
+                            currentBuilding.GetComponent<JobBuildings>().data = data.getallBuildingsMats()[i];
+                        }
+                    }
+
+                    foreach (GameObject Building in Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().BuildingsWithTransmitter)
+                    {
+                        if (Building.name == currentBuilding.name)
+                        {
+                            currentBuilding.GetComponent<BuildingsWithTransmitter>().data = data.getallBuildingsMats()[i];
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public GameObject getotherBuildingsCanvas(string name)
@@ -175,11 +232,6 @@ public class Main : MonoBehaviour
         return JobBuildingsCanvas;
     }
 
-    public StringandNumber.rowData getArray(int which)
-    {
-        return Buildings.Arrays[which];
-    }
-
     public string getchoosedBuilding()
     {
         return choosedBuilding;
@@ -198,16 +250,6 @@ public class Main : MonoBehaviour
     public GameObject[] getallBuildings()
     {
         return allBuildings;
-    }
-
-    public int getMatsAmount()
-    {
-        return MatsTexts.Length;
-    }
-
-    public StringandNumber.rowData[] getTrades()
-    {
-        return Trades.Arrays;
     }
 
     public void Exitnormal(GameObject destroyingObj)
@@ -229,5 +271,18 @@ public class Main : MonoBehaviour
         Building.transform.SetParent(ChoosedBuildingPlace.transform);
         choosedBuilding = Building.name;
         GetComponent<choosedObj>().setBuildingInstanced(true);
+    }
+
+    public GameObject getBuilding(string what)
+    {
+        foreach (GameObject currentBuilding in allBuildings)
+        {
+            if (currentBuilding.name == what)
+            {
+                return currentBuilding;
+            }
+        }
+        Debug.LogError("searched Building can't be found: " + what);
+        return null;
     }
 }

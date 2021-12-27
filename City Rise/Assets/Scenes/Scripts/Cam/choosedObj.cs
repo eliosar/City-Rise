@@ -111,8 +111,7 @@ public class choosedObj : MonoBehaviour
 
                                 if (GetComponent<Main>().getchoosedBuilding() == "Storage")
                                 {
-                                    int currentBuildings = GetComponent<Main>().Buildingsplaced.transform.childCount;
-                                    Buildingsplaced.GetComponent<Buildings>().addStoragesplaced(1);
+                                    Buildingsplaced.GetComponent<Buildings>().addStorageplaced();
                                     Buildingsplaced.GetComponent<Buildings>().setStorageplaced(Buildingsplaced.GetComponent<Buildings>().getStoragesplaced() - 1, ChoosedBuildingPlace.transform.GetChild(0).gameObject);
                                 }
 
