@@ -549,8 +549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPeopleInBuilding: 2
-  MatsName:
-  - Meat
+  MatsTexts:
+  - {fileID: 5010016929100376460, guid: 2c9f317c8d7d08049b3af3307d97edfb, type: 3}
   Transmitter: {fileID: 7329986841545338114, guid: ed2d6223a1e234844a2e0a28ba2469ad, type: 3}
   data:
     Mats:

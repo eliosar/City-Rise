@@ -205,8 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPeopleInBuilding: 2
-  MatsName:
-  - Fisch
+  MatsTexts:
+  - {fileID: 5717358965500988098, guid: 037708a1f2788374aa8a29c4dec59343, type: 3}
   transmitter: 0
   data:
     Mats:

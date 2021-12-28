@@ -51,7 +51,7 @@ public class Amount : MonoBehaviour
             }
         }
 
-        Storage.GetComponent<storedMats>().addMats(MainCamera.GetComponent<Main>().getMatsPlace("Rubin"), Number);
+        Storage.GetComponent<storedMats>().addMats(MainCamera.GetComponent<Main>().getMatsPlace("Rubins"), Number);
     }
 
     public void buyBuildings()
@@ -62,7 +62,7 @@ public class Amount : MonoBehaviour
         for (int i = 0; i < 1; i++)
         {
             Storage = Buildingsplaced.GetComponent<Buildings>().getrandomStorage();
-            int Matsplace = MainCamera.GetComponent<Main>().getMatsPlace("Rubin");
+            int Matsplace = MainCamera.GetComponent<Main>().getMatsPlace("Rubins");
             int maxMats = Storage.GetComponent<storedMats>().getMats(Matsplace);
 
             if (maxMats < GetComponent<Costs>().Rubin)

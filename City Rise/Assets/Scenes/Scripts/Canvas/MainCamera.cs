@@ -61,7 +61,6 @@ public class MainCamera : MonoBehaviour
                 for (int x = 0; x < mainCamera.GetComponent<Main>().MatsTexts.Length; x++)
                 {
                     Mats[x] += Buildingsplaced.GetComponent<Buildings>().getStorage(i).GetComponent<storedMats>().getMats(x);
-                    //Debug.Log(Mats[x]);
                 }
             }
         }

@@ -5,22 +5,28 @@ public class Data
 {
     private StringandNumber.rowData[] allfreeBuildings;
     private int[,] allstoredMats;
-    private ArrayLayout[] allBuildingsMats;
+    private int[,] allBuildingsMats;
+    private int[,] JobBuildingstransmittetMats;
+    private int[] allBuildingsMatsLastPlace;
     private string[] allBuildingsName;
     private float[] allBuildingsRotation;
     private float[,] allBuildingsPos;
     private float[] CamPos;
+    private int MatsTextsLength;
 
     public Data(GameObject Buildingsplaced)
     {
         GameObject mainCamera = Buildingsplaced.GetComponent<getMainCamera>().mainCamera.gameObject;
 
+        MatsTextsLength = mainCamera.GetComponent<Main>().MatsTexts.Length;
         CamPos = new float[3];
         allBuildingsRotation = new float[Buildingsplaced.transform.childCount];
         allBuildingsPos = new float[allBuildingsRotation.Length, 3];
         allBuildingsName = new string[allBuildingsRotation.Length];
-        allBuildingsMats = new ArrayLayout[allBuildingsRotation.Length];
-        allstoredMats = new int[allBuildingsRotation.Length, mainCamera.GetComponent<Main>().MatsTexts.Length];
+        allBuildingsMats = new int[allBuildingsRotation.Length, MatsTextsLength];
+        JobBuildingstransmittetMats = new int[allBuildingsRotation.Length, MatsTextsLength];
+        allBuildingsMatsLastPlace = new int[allBuildingsRotation.Length];
+        allstoredMats = new int[allBuildingsRotation.Length, MatsTextsLength];
         allfreeBuildings = new StringandNumber.rowData[mainCamera.GetComponent<Main>().getallBuildings().Length];
 
         CamPos[0] = mainCamera.transform.position.x;
@@ -44,7 +50,15 @@ public class Data
                 {
                     if(currentBuilding.name == Child.name)
                     {
-                        allBuildingsMats[i] = Child.GetComponent<JobBuildings>().data;
+                        int lastPlace = 0;
+                        for (int x = 0; x < Child.GetComponent<JobBuildings>().MatsTexts.Length; x++)
+                        {
+                            JobBuildingstransmittetMats[i, x] = Child.GetComponent<JobBuildings>().getTransmittedMatsAmount(x);
+
+                            allBuildingsMats[i, x] = Child.GetComponent<JobBuildings>().getMatsAmount(x);
+                            lastPlace = x;
+                        }
+                        allBuildingsMatsLastPlace[i] = lastPlace;
                     }
                 }
 
@@ -52,7 +66,12 @@ public class Data
                 {
                     if (currentBuilding.name == Child.name)
                     {
-                        allBuildingsMats[i] = Child.GetComponent<BuildingsWithTransmitter>().data;
+                        int lastPlace = 0;
+                        for (int x = 0; x < Child.GetComponent<BuildingsWithTransmitter>().MatsTexts.Length; x++)
+                        {
+                            allBuildingsMats[i, x] = Child.GetComponent<BuildingsWithTransmitter>().getMatsAmount(x);
+                        }
+                        allBuildingsMatsLastPlace[i] = lastPlace;
                     }
                 }
 
@@ -77,9 +96,36 @@ public class Data
     {
         return allstoredMats;
     }
-    public ArrayLayout[] getallBuildingsMats()
+    public int[] getallBuildingsMats(int index)
     {
-        return allBuildingsMats;
+        int[] Mats = new int[MatsTextsLength];
+
+        for (int i = 0; i < Mats.Length; i++)
+        {
+            if(i > allBuildingsMatsLastPlace[index])
+            {
+                break;
+            }
+
+            Mats[i] = allBuildingsMats[index, i];
+        }
+        return Mats;
+    }
+
+    public int[] getJobBuildingstransmittetMats(int index)
+    {
+        int[] Mats = new int[MatsTextsLength];
+
+        for (int i = 0; i < Mats.Length; i++)
+        {
+            if (i > allBuildingsMatsLastPlace[index])
+            {
+                break;
+            }
+
+            Mats[i] = JobBuildingstransmittetMats[index, i];
+        }
+        return Mats;
     }
     public string[] getallBuildingsName()
     {

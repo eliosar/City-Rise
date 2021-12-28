@@ -632,11 +632,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPeopleInBuilding: 2
-  MatsName:
-  - Stone
-  - Iron
-  - Gold
-  - Diamonds
+  MatsTexts:
+  - {fileID: 8458723542219681835, guid: cd184fc828400c14580b1d3090bf463c, type: 3}
+  - {fileID: 4756388194942726768, guid: c1a4a531328d61544af3859ad59c30f6, type: 3}
+  - {fileID: 6877663823896996577, guid: 6a389b2fea27e9843bdef64f64e0b0ee, type: 3}
+  - {fileID: 922763884619528420, guid: 2d664065e5531174b9de1f6ddc25886c, type: 3}
   Transmitter: {fileID: 2006463902798351185, guid: 0061fff84d1032f418ce06a219b3b55e, type: 3}
   data:
     Mats:

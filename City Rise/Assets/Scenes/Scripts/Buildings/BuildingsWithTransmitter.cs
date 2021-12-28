@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingsWithTransmitter : MonoBehaviour
 {
     public int maxPeopleInBuilding = 2;
     private int currentPeopleInBuilding = 0;
-    public string[] MatsName;
+    public Text[] MatsTexts;
     public GameObject Transmitter;
     public ArrayLayout data;
     private int[,] ProbabilityAmounts;
@@ -14,27 +15,24 @@ public class BuildingsWithTransmitter : MonoBehaviour
     public int maxSec = 15;
     public int maxMatsAmount = 30;
     private int[] Mats;
-    private int MatsAmount = 0;
     private bool newmats = true;
 
     private void Start()
     {
-        foreach (string Mat in MatsName)
+        if (Mats == null)
         {
-            MatsAmount += 1;
-        }
+            Mats = new int[MatsTexts.Length];
 
-        Mats = new int[MatsAmount];
-
-        for (int i = 0; i < Mats.Length; i++)
-        {
-            Mats[i] = 0;
+            for (int i = 0; i < Mats.Length; i++)
+            {
+                Mats[i] = 0;
+            }
         }
 
         int maxProbabilityA = 0;
         int maxMatsP = 0;
 
-        for (int i = 0; i < MatsAmount; i++)
+        for (int i = 0; i < MatsTexts.Length; i++)
         {
             if (maxProbabilityA < data.Mats[i].ProbabilityA.Length)
             {
@@ -47,10 +45,10 @@ public class BuildingsWithTransmitter : MonoBehaviour
             }
         }
 
-        ProbabilityAmounts = new int[MatsAmount, maxProbabilityA];
-        MatsProbability = new int[MatsAmount, maxMatsP];
+        ProbabilityAmounts = new int[MatsTexts.Length, maxProbabilityA];
+        MatsProbability = new int[MatsTexts.Length, maxMatsP];
 
-        for (int i = 0; i < MatsAmount; i++)
+        for (int i = 0; i < MatsTexts.Length; i++)
         {
             for (int x = 0; x < data.Mats[i].ProbabilityA.Length; x++)
             {
@@ -81,7 +79,7 @@ public class BuildingsWithTransmitter : MonoBehaviour
         float waitingSeconds = maxSec / currentPeopleInBuilding;
 
         yield return new WaitForSeconds(waitingSeconds);
-        for (int i = 0; i < MatsAmount; i++)
+        for (int i = 0; i < MatsTexts.Length; i++)
         {
             if (Mats[i] < maxMatsAmount)
             {
@@ -147,17 +145,17 @@ public class BuildingsWithTransmitter : MonoBehaviour
         currentPeopleInBuilding += add;
     }
 
-    public int getMat(int which)
+    public int getMatsAmount(int which)
     {
         return Mats[which];
     }
 
-    public int getMatsAmount()
+    public void setMatsAmounts(int[] Amounts)
     {
-        return MatsAmount;
+        Mats = Amounts;
     }
 
-    public void takeawayMatsamount(int which, int takeaway)
+    public void takeawayMatsAmount(int which, int takeaway)
     {
         Mats[which] -= takeaway;
     }

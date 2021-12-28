@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPeopleInBuilding: 2
-  MatsName:
-  - Wood
+  MatsTexts:
+  - {fileID: 2317246263420484915, guid: cbbf156cd8cf46545ae7c4183cdf9e39, type: 3}
   transmitter: 0
   data:
     Mats:

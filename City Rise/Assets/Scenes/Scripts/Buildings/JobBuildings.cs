@@ -1,45 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JobBuildings : MonoBehaviour
 {
     public int maxPeopleInBuilding = 2;
     private int currentPeopleInBuilding = 0;
-    public string[] MatsName;
+    public Text[] MatsTexts;
     public bool transmitter = false;
     public ArrayLayout data;
     private int[,] ProbabilityAmounts;
     private int[,] MatsProbability;
     public int maxSec = 15;
     public int maxTransSec = 10;
-    private int[] transmittetMats;
-    private int[] currentProductAmount;
+    private int[] TransmittetMatsAmount;
+    private int[] MatsAmount;
     private int maxProductAmount = 30;
     private bool newmats = true;
-    private int MatsAmount = 0;
 
     private void Start()
     {
-        foreach (string Mat in MatsName)
+        if (MatsAmount == null && TransmittetMatsAmount == null)
         {
-            MatsAmount += 1;
+            MatsAmount = new int[MatsTexts.Length];
+            TransmittetMatsAmount = new int[MatsTexts.Length];
+
+            for (int i = 0; i < MatsAmount.Length; i++)
+            {
+                MatsAmount[i] = 0;
+            }
         }
 
-        currentProductAmount = new int[MatsAmount];
-        transmittetMats = new int[MatsAmount];
-
-        for (int i = 0; i < currentProductAmount.Length; i++)
-        {
-            currentProductAmount[i] = 0;
-        }
-
-        if (transmitter is false)
+        if (transmitter == false)
         {
             int maxProbabilityA = 0;
             int maxMatsP = 0;
 
-            for (int i = 0; i < MatsAmount; i++)
+            for (int i = 0; i < MatsTexts.Length; i++)
             {
                 if (maxProbabilityA < data.Mats[i].ProbabilityA.Length)
                 {
@@ -52,10 +50,10 @@ public class JobBuildings : MonoBehaviour
                 }
             }
 
-            ProbabilityAmounts = new int[MatsAmount, maxProbabilityA];
-            MatsProbability = new int[MatsAmount, maxMatsP];
+            ProbabilityAmounts = new int[MatsTexts.Length, maxProbabilityA];
+            MatsProbability = new int[MatsTexts.Length, maxMatsP];
 
-            for (int i = 0; i < MatsAmount; i++)
+            for (int i = 0; i < MatsTexts.Length; i++)
             {
                 for (int x = 0; x < data.Mats[i].ProbabilityA.Length; x++)
                 {
@@ -77,14 +75,7 @@ public class JobBuildings : MonoBehaviour
         {
             if (transmitter)
             {
-                int transmitMats = 0;
-
-                foreach (int Mat in transmittetMats)
-                {
-                    transmitMats += Mat;
-                }
-
-                if(transmitMats > 0)
+                if(TransmittetMatsAmount.Length > 0)
                 {
                     if (newmats)
                     {
@@ -108,23 +99,23 @@ public class JobBuildings : MonoBehaviour
         float waitingSeconds = Sec / currentPeopleInBuilding;
 
         yield return new WaitForSeconds(waitingSeconds);
-        for (int i = 0; i < MatsAmount; i++)
+        for (int i = 0; i < MatsTexts.Length; i++)
         {
-            if (currentProductAmount[i] < maxProductAmount)
+            if (MatsAmount[i] < maxProductAmount)
             {
                 if (transmitter)
                 {
-                    currentProductAmount[i] += transmittetMats[i];
-                    transmittetMats[i] = 0;
+                    MatsAmount[i] += TransmittetMatsAmount[i];
+                    TransmittetMatsAmount[i] = 0;
                 }
                 else
                 {
-                    currentProductAmount[i] += random(i);
+                    MatsAmount[i] += random(i);
                 }
 
-                if (currentProductAmount[i] > maxProductAmount)
+                if (MatsAmount[i] > maxProductAmount)
                 {
-                    currentProductAmount[i] = maxProductAmount;
+                    MatsAmount[i] = maxProductAmount;
                 }
             }
         }
@@ -167,29 +158,52 @@ public class JobBuildings : MonoBehaviour
         return Amount;
     }
 
-    public int getMatsAmount()
-    {
-        return MatsAmount;
-    }
-
     public int getmaxPeopleinBuilding()
     {
         return maxPeopleInBuilding;
     }
 
-    public int getcurrentProductAmount(int which)
+    public int getMatsAmount(int which)
     {
-        return currentProductAmount[which];
+        return MatsAmount[which];
     }
 
-    public int getmaxProductAmount()
+    public int getTransmittedMatsAmount(int which)
+    {
+        return TransmittetMatsAmount[which];
+    }
+
+    public void setMatsAmounts(int[] Amounts)
+    {
+        MatsAmount = Amounts;
+    }
+
+    public void setTransmittetMatsAmounts(int[] Amounts)
+    {
+        TransmittetMatsAmount = Amounts;
+    }
+
+    public int getMatsPlace(string Name)
+    {
+        for (int i = 0; i < MatsTexts.Length; i++)
+        {
+            if (MatsTexts[i].name == Name)
+            {
+                return i;
+            }
+        }
+        Debug.LogError("wrong Mat Name");
+        return 0;
+    }
+
+    public int getmaxMatsAmount()
     {
         return maxProductAmount;
     }
 
-    public void takeawaycurrentProductamount(int which, int takeaway)
+    public void takeawayMatsAmount(int which, int takeaway)
     {
-        currentProductAmount[which] -= takeaway;
+        MatsAmount[which] -= takeaway;
     }
 
     public void setNewMats(bool what)
@@ -199,7 +213,7 @@ public class JobBuildings : MonoBehaviour
 
     public void addtransmittetMats(int which, int add)
     {
-        transmittetMats[which] += add;
+        TransmittetMatsAmount[which] += add;
     }
 
     public void addcurrentPeopleInBuilding(int add)

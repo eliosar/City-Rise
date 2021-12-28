@@ -16,9 +16,9 @@ public class JobBuildingsCanvas : MonoBehaviour
     {
         transform.GetChild(0).GetComponent<Text>().text = transform.parent.name + "\n\n" + GetComponentInParent<JobBuildings>().getcurrentPeopleInBuilding() + " / " + GetComponentInParent<JobBuildings>().maxPeopleInBuilding + " People in Building\n";
 
-        for (int i = 0; i < GetComponentInParent<JobBuildings>().getMatsAmount(); i++)
+        for (int i = 0; i < GetComponentInParent<JobBuildings>().MatsTexts.Length; i++)
         {
-            transform.GetChild(0).GetComponent<Text>().text += GetComponentInParent<JobBuildings>().getcurrentProductAmount(i) + " / " + GetComponentInParent<JobBuildings>().getmaxProductAmount() + " " + GetComponentInParent<JobBuildings>().MatsName[i] + "\n";
+            transform.GetChild(0).GetComponent<Text>().text += GetComponentInParent<JobBuildings>().getMatsAmount(i) + " / " + GetComponentInParent<JobBuildings>().getmaxMatsAmount() + " " + GetComponentInParent<JobBuildings>().MatsTexts[i].name + "\n";
         }
     }
 
@@ -29,36 +29,23 @@ public class JobBuildingsCanvas : MonoBehaviour
 
     public void collectAll()
     {
-        foreach (string Name in GetComponentInParent<JobBuildings>().MatsName)
+        for (int i = 0; i < GetComponentInParent<JobBuildings>().MatsTexts.Length; i++)
         {
-            ProductHandOver(Name);
+            ProductHandOver(GetComponentInParent<JobBuildings>().MatsTexts[i].name, i);
         }
     }
 
-    private void ProductHandOver(string Name)
+    private void ProductHandOver(string Name, int repeats)
     {
         GameObject[] Storages = GetComponentInParent<Buildings>().getStorages();
         int currentMatplace = Buildingsplaced.GetComponent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace(Name);
-        int i = 0;
-        int different = 0;
         GameObject MainCameraCanvas = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMainCameraCanvas();
-
-        foreach (Text Mat in MainCameraCanvas.GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsTexts)
-        {
-            if (Mat.name == GetComponentInParent<JobBuildings>().MatsName[0])
-            {
-                different = i;
-                break;
-            }
-
-            i += 1;
-        }
 
         foreach (GameObject currentStorage in Storages)
         {
             if (currentStorage != null)
             {
-                int currentProductAmount = GetComponentInParent<JobBuildings>().getcurrentProductAmount(currentMatplace - different);
+                int currentProductAmount = GetComponentInParent<JobBuildings>().getMatsAmount(repeats);
                 int diff = currentStorage.GetComponent<storedMats>().getMaxMats() - currentStorage.GetComponent<storedMats>().getMats(currentMatplace);
 
                 if (diff > 0)
@@ -74,7 +61,7 @@ public class JobBuildingsCanvas : MonoBehaviour
                     }
 
                     Buildingsplaced.GetComponent<Buildings>().getrandomStorage().GetComponent<storedMats>().addMats(currentMatplace, Amount);
-                    GetComponentInParent<JobBuildings>().takeawaycurrentProductamount(currentMatplace - different, Amount);
+                    GetComponentInParent<JobBuildings>().takeawayMatsAmount(repeats, Amount);
                 }
             }
         }

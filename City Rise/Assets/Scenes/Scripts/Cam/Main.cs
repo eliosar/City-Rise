@@ -139,7 +139,8 @@ public class Main : MonoBehaviour
                     {
                         if (Building.name == currentBuilding.name)
                         {
-                            currentBuilding.GetComponent<JobBuildings>().data = data.getallBuildingsMats()[i];
+                            currentBuilding.GetComponent<JobBuildings>().setTransmittetMatsAmounts(data.getallBuildingsMats(i));
+                            currentBuilding.GetComponent<JobBuildings>().setMatsAmounts(data.getallBuildingsMats(i));
                         }
                     }
 
@@ -147,7 +148,7 @@ public class Main : MonoBehaviour
                     {
                         if (Building.name == currentBuilding.name)
                         {
-                            currentBuilding.GetComponent<BuildingsWithTransmitter>().data = data.getallBuildingsMats()[i];
+                            currentBuilding.GetComponent<BuildingsWithTransmitter>().setMatsAmounts(data.getallBuildingsMats(i));
                         }
                     }
                 }
@@ -169,11 +170,6 @@ public class Main : MonoBehaviour
         }
 
         return Canvas;
-    }
-
-    public Text[] getMatsTexts()
-    {
-        return MatsTexts;
     }
 
     public int RandomNumber(int maxAmount)
@@ -202,6 +198,11 @@ public class Main : MonoBehaviour
             {
                 Place += 1;
             }
+        }
+
+        if(Place == MatsTexts.Length)
+        {
+            Debug.LogError("Wrong Mat name");
         }
 
         return Place;
