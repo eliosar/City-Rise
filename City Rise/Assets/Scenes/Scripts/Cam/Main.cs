@@ -208,6 +208,20 @@ public class Main : MonoBehaviour
         return Place;
     }
 
+    public Text getRubinsText()
+    {
+        foreach (Text Mat in MatsTexts)
+        {
+            if(Mat.name == "Rubins")
+            {
+                return Mat;
+            }
+        }
+
+        Debug.LogError("Rubins not found in MatsTexts");
+        return null;
+    }
+
     public GameObject getfreeBuildingsCanvas()
     {
         return freeBuildingsCanvas;

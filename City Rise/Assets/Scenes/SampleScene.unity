@@ -301,6 +301,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 47273186}
     m_Modifications:
+    - target: {fileID: 5010016929100376460, guid: 2c9f317c8d7d08049b3af3307d97edfb, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5010016929100376462, guid: 2c9f317c8d7d08049b3af3307d97edfb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -629,6 +633,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 47273186}
     m_Modifications:
+    - target: {fileID: 922763884619528420, guid: 2d664065e5531174b9de1f6ddc25886c, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 922763884619528422, guid: 2d664065e5531174b9de1f6ddc25886c, type: 3}
       propertyPath: m_Name
       value: Diamond
@@ -1086,6 +1094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood
       objectReference: {fileID: 0}
+    - target: {fileID: 2317246263420484915, guid: cbbf156cd8cf46545ae7c4183cdf9e39, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2317246263420484925, guid: cbbf156cd8cf46545ae7c4183cdf9e39, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1343,6 +1355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8458723542219681835, guid: cd184fc828400c14580b1d3090bf463c, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8458723542219682262, guid: cd184fc828400c14580b1d3090bf463c, type: 3}
       propertyPath: m_Name
       value: Stone
@@ -1356,6 +1372,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 47273186}
     m_Modifications:
+    - target: {fileID: 5717358965500988098, guid: 037708a1f2788374aa8a29c4dec59343, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5717358965500988099, guid: 037708a1f2788374aa8a29c4dec59343, type: 3}
       propertyPath: m_Name
       value: Fisch
@@ -1795,7 +1815,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4756388194942726768, guid: c1a4a531328d61544af3859ad59c30f6, type: 3}
       propertyPath: m_Text
-      value: 0 Iron
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4756388194942726782, guid: c1a4a531328d61544af3859ad59c30f6, type: 3}
       propertyPath: m_Name
@@ -1894,6 +1914,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 47273186}
     m_Modifications:
+    - target: {fileID: 898985277331788496, guid: 40ed5a9e12db33c47a04a51f246d5537, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 898985277331788502, guid: 40ed5a9e12db33c47a04a51f246d5537, type: 3}
       propertyPath: m_Name
       value: Wheat
@@ -1991,6 +2015,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 47273186}
     m_Modifications:
+    - target: {fileID: 6877663823896996577, guid: 6a389b2fea27e9843bdef64f64e0b0ee, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6877663823896996578, guid: 6a389b2fea27e9843bdef64f64e0b0ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0

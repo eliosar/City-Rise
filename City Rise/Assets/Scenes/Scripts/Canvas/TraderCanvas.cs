@@ -18,6 +18,7 @@ public class TraderCanvas : MonoBehaviour
                 if(Button.name == Array.Name)
                 {
                     Trade = Instantiate(Button);
+                    Trade.name = Button.name;
                     Trade.transform.SetParent(Buildings.transform);
                     Trade.GetComponent<Amount>().setNumber(Array.Amount);
                     Trade.GetComponent<Amount>().setCosts(Array.Costs);
@@ -29,7 +30,6 @@ public class TraderCanvas : MonoBehaviour
                         Trade.GetComponent<Button>().interactable = false;
                     }
 
-                    Trade.name = Button.name;
                     break;
                 }
             }

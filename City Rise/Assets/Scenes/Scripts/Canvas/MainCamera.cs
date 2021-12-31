@@ -10,6 +10,7 @@ public class MainCamera : MonoBehaviour
     private GameObject ButtonsFolder;
     private GameObject costingBuildingsButton;
     private GameObject freeBuildingsButton;
+    private GameObject RubinsText;
 
     private void Start()
     {

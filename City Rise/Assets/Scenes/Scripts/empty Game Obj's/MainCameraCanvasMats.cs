@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class MainCameraCanvasMats : MonoBehaviour
 {
-    private Text[] MatsTexts;
-    public Text Rubins;
+    private Text Rubins;
     int RubinPlace;
 
     private void Start()
     {
-        MatsTexts = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().MatsTexts;
+        Rubins = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getRubinsText();
         RubinPlace = GetComponentInParent<getMainCamera>().mainCamera.GetComponent<Main>().getMatsPlace(Rubins.name);
     }
 
@@ -21,9 +20,9 @@ public class MainCameraCanvasMats : MonoBehaviour
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<Text>().text = Mats[i] + " " + MatsTexts[i].name;
+            transform.GetChild(i).GetComponent<Text>().text = Mats[i] + " ";
         }
         
-        Rubins.GetComponent<Text>().text = Mats[RubinPlace] + " " + MatsTexts[RubinPlace].name;
+        Rubins.GetComponent<Text>().text = Mats[RubinPlace] + " ";
     }
 }
